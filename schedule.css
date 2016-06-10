@@ -1,0 +1,54 @@
+.titleBar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #b59a57;
+    width: fill;
+    height: 9em;
+    box-shadow: 0px 5px 15px 0px rgba(0,0,0,0.5);
+}
+
+.material-icons{
+  float: center;
+}
+
+.dateRange{
+    color: white;
+    opacity: .87;
+    font-size: 2.5em;
+}
+
+.scheduleViewButtons{
+  color: white;
+  background-color: transparent;
+  border-color: transparent;
+  opacity: .87;
+  cursor: pointer;
+  margin-left: 1em;
+}
+
+
+.scheduleButtons {
+    background-color: transparent;
+    border-color: transparent;
+    color: white;
+    opacity: .87;
+    cursor: pointer;
+}
+
+.monthRow{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+
+
+
+.monthDaybox{
+  background-color: green;
+  border-color: black;
+  margin: 5px;
+  padding: 5px;
+  flex: 1;
+}
