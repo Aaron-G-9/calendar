@@ -42,13 +42,13 @@ const ViewSelectorButtons = React.createClass({
     return (
         <div className="viewSelectorButtons">
             <button className="scheduleViewButtons">
-                <i className="material-icons">view_day</i>
+                <i className="material-icons w3-xxxlarge">view_day</i>
             </button>
             <button className="scheduleViewButtons">
-                <i className="material-icons">view_week</i>
+                <i className="material-icons w3-xxxlarge">view_week</i>
             </button>
             <button className="scheduleViewButtons">
-                <i className="material-icons">view_module</i>
+                <i className="material-icons w3-xxxlarge">view_module</i>
             </button>
         </div>
     );

@@ -1,7 +1,7 @@
 .titleBar {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: space-between;;
     background-color: #2196F3;
     width: fill;
     height: 9em;
@@ -24,7 +24,8 @@
   border-color: transparent;
   opacity: .87;
   cursor: pointer;
-  margin-left: 1em;
+  margin-left: 2em;
+  margin-right: 2em;
 }
 
 
@@ -49,6 +50,12 @@
     align-items: center;
 }
 
+.viewSelectorButtons{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+
+}
 
 
 .monthDaybox{
