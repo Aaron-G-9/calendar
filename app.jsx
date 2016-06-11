@@ -26,18 +26,11 @@ const TitleBar = React.createClass({
   render(){
     return (
       <div className="titleBar">
-        <div className="backWeek">
           <button className="scheduleButtons">
-            <i className="material-icons">navigate_before</i>
+            <i className="material-icons">today</i>
           </button>
-        </div>
-        <DateRange />
-        <div className="forwardWeek">
-            <button className="scheduleButtons" id="scheduleForwardWeek">
-                <i className="material-icons">navigate_next</i>
-            </button>
-        </div>
-        <ViewSelectorButtons />
+          <DatePaginator />
+          <ViewSelectorButtons />
       </div>
     );
   }
@@ -72,6 +65,25 @@ const DateRange = React.createClass({
     );
   }
 });
+
+const DatePaginator = React.createClass({
+  render() {
+    return (
+      <div className="datePaginator">
+        <button className="scheduleButtons">
+          <i className="material-icons">navigate_before</i>
+        </button>
+        <DateRange />
+        <button className="scheduleButtons" id="scheduleForwardWeek">
+          <i className="material-icons">navigate_next</i>
+        </button>
+      </div>
+    );
+  }
+});
+
+
+
 
 const MonthGrid = React.createClass({
   render() {
