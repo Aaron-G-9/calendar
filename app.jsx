@@ -60,9 +60,13 @@ const ViewSelectorButtons = React.createClass({
 
 const DateRange = React.createClass({
   render () {
+    var monthNames = ["January", "February", "March", "April", "May", "June",
+    "July", "August", "September", "October", "November", "December"
+    ];
+    var d = new Date();
     return (
       <div className="dateRange">
-          July, 2016
+          {monthNames[d.getMonth()] + " " + d.getUTCFullYear() }
       </div>
     );
   }
@@ -107,6 +111,7 @@ const MonthGrid = React.createClass({
   render() {
     return (
       <div className="monthGrid">
+        <MonthDaysHeader />
         <MonthRow />
         <MonthRow />
         <MonthRow />
@@ -130,6 +135,24 @@ const MonthDayBox = React.createClass({
 });
 
 
+const MonthDaysHeader = React.createClass({
+  render() {
+    var sundayWeek = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+    return(
+      <div className="monthDaysHeader">
+
+          <div>{sundayWeek[0]}</div>
+          <div>{sundayWeek[1]}</div>
+          <div>{sundayWeek[2]}</div>
+          <div>{sundayWeek[3]}</div>
+          <div>{sundayWeek[4]}</div>
+          <div>{sundayWeek[5]}</div>
+          <div>{sundayWeek[6]}</div>
+
+      </div>
+    );
+  }
+});
 
 
 

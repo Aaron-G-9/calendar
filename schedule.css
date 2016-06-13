@@ -67,11 +67,19 @@
 .monthDaybox{
   background-color: white;
   border-color: black;
-  border-width: medium;
+  border-width: thin;
   border-style: solid;
   height: 10em;
   flex: 1;
 }
+
+.monthDaysHeader{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+}
+
+
 
 .monthGrid{
   display: flex;
