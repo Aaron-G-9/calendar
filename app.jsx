@@ -16,7 +16,9 @@ const Everything = React.createClass({
     return (
       <div>
           <TitleBar />
-          <MonthGrid />
+          <div className="mainContent">
+            <MonthGrid />
+          </div>
       </div>
     );
   }
@@ -85,7 +87,7 @@ const DatePaginator = React.createClass({
 
 
 
-const MonthGrid = React.createClass({
+const MonthRow = React.createClass({
   render() {
     return (
       <div className="monthRow">
@@ -100,6 +102,22 @@ const MonthGrid = React.createClass({
     );
   }
 });
+
+const MonthGrid = React.createClass({
+  render() {
+    return (
+      <div className="monthGrid">
+        <MonthRow />
+        <MonthRow />
+        <MonthRow />
+        <MonthRow />
+        <MonthRow />
+      </div>
+    );
+  }
+});
+
+
 
 const MonthDayBox = React.createClass({
   render () {
