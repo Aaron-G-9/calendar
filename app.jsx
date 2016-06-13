@@ -146,7 +146,7 @@ const HourContent = React.createClass({
   render() {
     return (
       <div className="hourBoxContent">
-          aaa
+          
       </div>
     );
   }

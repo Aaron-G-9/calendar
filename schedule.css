@@ -91,6 +91,7 @@
 .hourBox{
   width: 5em;
   height: 3.3em;
+  color: grey;
   background-color: transparent;
   border-color: black;
   border-width: thin;
