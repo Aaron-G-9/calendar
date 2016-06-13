@@ -15,6 +15,7 @@
 .mainContent{
   display: flex;
   flex: 1;
+  flex-direction: row;
 }
 
 
@@ -89,7 +90,16 @@
 
 .hourBox{
   width: 5em;
-  height: 3.5em;
+  height: 3.3em;
+  background-color: transparent;
+  border-color: black;
+  border-width: thin;
+  border-style: solid;
+}
+
+.hourBoxContent{
+  width: 200em;
+  height: 3.3em;
   background-color: transparent;
   border-color: black;
   border-width: thin;

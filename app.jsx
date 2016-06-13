@@ -15,7 +15,8 @@ const Everything = React.createClass({
       <div>
           <TitleBar />
           <div className="mainContent">
-            <DayHours />
+            <DayView />
+            <DayContent />
           </div>
       </div>
     );
@@ -91,26 +92,41 @@ const DatePaginator = React.createClass({
 const DayView = React.createClass({
   render() {
     return (
-      <div />
+      <div className="dayview">
+        <DayHours />
+      </div>
     );
   }
 });
 
-
+const prettyHours = ["All Day", "7am", "8am", "9am", "10am", "11am", "12am", "1pm",
+    "2pm", "3pm", "4pm", "5pm", "6pm", "7pm", "8pm", "9pm", "10pm", "11pm"];
 
 
 
 const DayHours = React.createClass({
   render() {
-    const prettyHours = ["All Day", "7am", "8am", "9am", "10am", "11am", "12am", "1pm",
-        "2pm", "3pm", "4pm", "5pm", "6pm", "7pm", "8pm", "9pm", "10pm", "11pm"];
-    var rows = [];
+    var timeboxes = [];
     for (var i = 0; i < prettyHours.length; i++){
-      rows.push(<HourBox title={prettyHours[i]} />);
+      timeboxes.push(<HourBox title={prettyHours[i]} />);
     }
     return (
       <tbody>
-        {rows}
+        {timeboxes}
+      </tbody>
+    );
+  }
+});
+
+const DayContent = React.createClass({
+  render() {
+    var contentboxes = [];
+    for (var i = 0; i < prettyHours.length; i++){
+      contentboxes.push(<HourContent />);
+    }
+    return (
+      <tbody>
+        {contentboxes}
       </tbody>
     );
   }
@@ -126,6 +142,15 @@ const HourBox = React.createClass({
   }
 });
 
+const HourContent = React.createClass({
+  render() {
+    return (
+      <div className="hourBoxContent">
+          aaa
+      </div>
+    );
+  }
+});
 
 
 
