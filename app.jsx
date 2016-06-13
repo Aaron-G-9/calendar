@@ -1,4 +1,3 @@
-
 const App = React.createClass({
     render() {
         return (
@@ -16,7 +15,7 @@ const Everything = React.createClass({
       <div>
           <TitleBar />
           <div className="mainContent">
-            <MonthGrid />
+            <DayHours />
           </div>
       </div>
     );
@@ -89,6 +88,49 @@ const DatePaginator = React.createClass({
 
 
 
+const DayView = React.createClass({
+  render() {
+    return (
+      <div />
+    );
+  }
+});
+
+
+
+
+
+const DayHours = React.createClass({
+  render() {
+    const prettyHours = ["All Day", "7am", "8am", "9am", "10am", "11am", "12am", "1pm",
+        "2pm", "3pm", "4pm", "5pm", "6pm", "7pm", "8pm", "9pm", "10pm", "11pm"];
+    var rows = [];
+    for (var i = 0; i < prettyHours.length; i++){
+      rows.push(<HourBox title={prettyHours[i]} />);
+    }
+    return (
+      <tbody>
+        {rows}
+      </tbody>
+    );
+  }
+});
+
+const HourBox = React.createClass({
+  render() {
+    return (
+      <div className="hourBox">
+        {this.props.title}
+      </div>
+    );
+  }
+});
+
+
+
+
+//***************************Month Stuff**********************//
+
 
 const MonthRow = React.createClass({
   render() {
@@ -121,8 +163,6 @@ const MonthGrid = React.createClass({
   }
 });
 
-
-
 const MonthDayBox = React.createClass({
   render () {
     return (
@@ -132,7 +172,6 @@ const MonthDayBox = React.createClass({
     );
   }
 });
-
 
 const MonthDaysHeader = React.createClass({
   render() {

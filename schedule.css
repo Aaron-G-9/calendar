@@ -86,3 +86,12 @@
   flex-direction: column;
   flex: 1;
 }
+
+.hourBox{
+  width: 5em;
+  height: 3.5em;
+  background-color: transparent;
+  border-color: black;
+  border-width: thin;
+  border-style: solid;
+}
