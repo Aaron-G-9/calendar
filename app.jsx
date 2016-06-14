@@ -8,6 +8,8 @@ const monthNames = ["January", "February", "March", "April", "May", "June",
 const prettyHours = ["All Day", "7am", "8am", "9am", "10am", "11am", "12am", "1pm",
     "2pm", "3pm", "4pm", "5pm", "6pm", "7pm", "8pm", "9pm", "10pm", "11pm"];
 
+var sundayWeek = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+
 var currentMonth = d.getMonth();
 var currentYear = d.getUTCFullYear();
 var currentMonthName = monthNames[currentMonth];
@@ -84,16 +86,25 @@ const DateRange = React.createClass({
   }
 });
 
+function getDaysOfMonth(){
+  var days = new Date(currentYear, currentMonth +1, 0);
+  return days.getDate();
+}
+
+function getFirstDayofMonth(){
+  var days = new Date(currentYear, currentMonth, 1);
+  return days.getDay();
+}
+
 function forwardMonth(){
   if (currentMonth < 11){
     currentMonth += 1;
-    currentMonthName=monthNames[currentMonth];
   }else{
     currentMonth = 0;
     currentYear +=1;
   }
 
-  console.log(monthNames[currentMonth]);
+  console.log("Month: " + monthNames[currentMonth] + "\n Days: " + getDaysOfMonth() + "\n Start: " + sundayWeek[getFirstDayofMonth()]);
 }
 function backMonth(){
   currentMonth -= 1;
@@ -236,7 +247,7 @@ const MonthDayBox = React.createClass({
 
 const MonthDaysHeader = React.createClass({
   render() {
-    var sundayWeek = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+
     return(
       <div className="monthDaysHeader">
 
