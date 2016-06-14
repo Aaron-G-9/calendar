@@ -74,6 +74,15 @@
   flex: 1;
 }
 
+.selectedMonthDaybox{
+  background-color: grey;
+  border-color: black;
+  border-width: thin;
+  border-style: solid;
+  height: 10em;
+  flex: 1;
+}
+
 .monthDaysHeader{
   display: flex;
   flex-direction: row;

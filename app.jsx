@@ -8,6 +8,8 @@ const App = React.createClass({
     }
 });
 
+var d = new Date();
+
 
 const Everything = React.createClass({
   render() {
@@ -15,8 +17,8 @@ const Everything = React.createClass({
       <div>
           <TitleBar />
           <div className="mainContent">
-            <DayView />
-            <DayContent />
+            <MonthGrid />
+
           </div>
       </div>
     );
@@ -62,7 +64,6 @@ const DateRange = React.createClass({
     var monthNames = ["January", "February", "March", "April", "May", "June",
     "July", "August", "September", "October", "November", "December"
     ];
-    var d = new Date();
     return (
       <div className="dateRange">
           {monthNames[d.getMonth()] + " " + d.getUTCFullYear() }
@@ -146,7 +147,7 @@ const HourContent = React.createClass({
   render() {
     return (
       <div className="hourBoxContent">
-          
+
       </div>
     );
   }
@@ -159,15 +160,13 @@ const HourContent = React.createClass({
 
 const MonthRow = React.createClass({
   render() {
+    var monthDayBoxArray = [];
+    for (var i = 1; i < 8; i++){
+      monthDayBoxArray.push(<MonthDayBox dayBoxNumber={i + (this.props.monthRowNumber * 7)} />);
+    }
     return (
       <div className="monthRow">
-        <MonthDayBox />
-        <MonthDayBox />
-        <MonthDayBox />
-        <MonthDayBox />
-        <MonthDayBox />
-        <MonthDayBox />
-        <MonthDayBox />
+        {monthDayBoxArray}
       </div>
     );
   }
@@ -175,14 +174,14 @@ const MonthRow = React.createClass({
 
 const MonthGrid = React.createClass({
   render() {
+    var monthRowArray = [];
+    for (var i  = 0; i < 5; i++){
+      monthRowArray.push(<MonthRow monthRowNumber={i} />);
+    }
     return (
       <div className="monthGrid">
         <MonthDaysHeader />
-        <MonthRow />
-        <MonthRow />
-        <MonthRow />
-        <MonthRow />
-        <MonthRow />
+        {monthRowArray}
       </div>
     );
   }
@@ -190,11 +189,19 @@ const MonthGrid = React.createClass({
 
 const MonthDayBox = React.createClass({
   render () {
-    return (
-      <div className="monthDaybox">
-        asdf
-      </div>
-    );
+    if (this.props.dayBoxNumber == d.getDate()){
+      return (
+        <div className="selectedMonthDaybox">
+          {this.props.dayBoxNumber}
+        </div>
+      );
+    }else{
+      return (
+        <div className="monthDaybox">
+          {this.props.dayBoxNumber}
+        </div>
+      );
+    }
   }
 });
 
