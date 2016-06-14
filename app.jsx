@@ -1,3 +1,17 @@
+//Variables will go here:
+var d = new Date();
+
+const monthNames = ["January", "February", "March", "April", "May", "June",
+"July", "August", "September", "October", "November", "December"
+];
+
+const prettyHours = ["All Day", "7am", "8am", "9am", "10am", "11am", "12am", "1pm",
+    "2pm", "3pm", "4pm", "5pm", "6pm", "7pm", "8pm", "9pm", "10pm", "11pm"];
+
+var currentMonth = d.getMonth();
+var currentYear = d.getUTCFullYear();
+var currentMonthName = monthNames[currentMonth];
+
 const App = React.createClass({
     render() {
         return (
@@ -8,7 +22,7 @@ const App = React.createClass({
     }
 });
 
-var d = new Date();
+
 
 
 const Everything = React.createClass({
@@ -40,11 +54,12 @@ const TitleBar = React.createClass({
 });
 
 
+
 const ViewSelectorButtons = React.createClass({
   render () {
     return (
         <div className="viewSelectorButtons">
-            <button className="scheduleViewButtons">
+            <button className="scheduleViewButtons" >
                 <i className="material-icons w3-xxxlarge">view_day</i>
             </button>
             <button className="scheduleViewButtons">
@@ -61,26 +76,42 @@ const ViewSelectorButtons = React.createClass({
 
 const DateRange = React.createClass({
   render () {
-    var monthNames = ["January", "February", "March", "April", "May", "June",
-    "July", "August", "September", "October", "November", "December"
-    ];
     return (
       <div className="dateRange">
-          {monthNames[d.getMonth()] + " " + d.getUTCFullYear() }
+          {currentMonthName + " " + currentYear }
       </div>
     );
   }
 });
 
+function forwardMonth(){
+  if (currentMonth < 11){
+    currentMonth += 1;
+    currentMonthName=monthNames[currentMonth];
+  }else{
+    currentMonth = 0;
+    currentYear +=1;
+  }
+
+  console.log(monthNames[currentMonth]);
+}
+function backMonth(){
+  currentMonth -= 1;
+}
+
+
+
 const DatePaginator = React.createClass({
+
+
   render() {
     return (
       <div className="datePaginator">
-        <button className="scheduleButtons">
+        <button className="scheduleButtons" onClick={backMonth}>
           <i className="material-icons">navigate_before</i>
         </button>
         <DateRange />
-        <button className="scheduleButtons" id="scheduleForwardWeek">
+        <button className="scheduleButtons" id="scheduleForwardWeek" onClick={forwardMonth}>
           <i className="material-icons">navigate_next</i>
         </button>
       </div>
@@ -100,8 +131,6 @@ const DayView = React.createClass({
   }
 });
 
-const prettyHours = ["All Day", "7am", "8am", "9am", "10am", "11am", "12am", "1pm",
-    "2pm", "3pm", "4pm", "5pm", "6pm", "7pm", "8pm", "9pm", "10pm", "11pm"];
 
 
 
