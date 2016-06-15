@@ -14,7 +14,7 @@ var currentMonth = d.getMonth();
 var currentYear = d.getUTCFullYear();
 var currentMonthName = monthNames[currentMonth];
 
-const App = React.createClass({
+class App extends React.Component{
     render() {
         return (
             <div className="content">
@@ -22,12 +22,12 @@ const App = React.createClass({
             </div>
         );
     }
-});
+}
 
 
 
 
-const Everything = React.createClass({
+class Everything extends React.Component{
   render() {
     return (
       <div>
@@ -39,9 +39,9 @@ const Everything = React.createClass({
       </div>
     );
   }
-});
+}
 
-const TitleBar = React.createClass({
+class TitleBar extends React.Component{
   render(){
     return (
       <div className="titleBar">
@@ -53,11 +53,11 @@ const TitleBar = React.createClass({
       </div>
     );
   }
-});
+}
 
 
 
-const ViewSelectorButtons = React.createClass({
+class ViewSelectorButtons extends React.Component{
   render () {
     return (
         <div className="viewSelectorButtons">
@@ -73,18 +73,25 @@ const ViewSelectorButtons = React.createClass({
         </div>
     );
   }
-});
+}
 
 
-const DateRange = React.createClass({
+class DateRange extends React.Component{
+  constructor(){
+    super();
+    this.state = {
+      month: monthNames[currentMonth],
+      year: currentYear,
+    };
+  }
   render () {
     return (
       <div className="dateRange">
-          {currentMonthName + " " + currentYear }
+          {this.state.month + " " + this.state.year }
       </div>
     );
   }
-});
+}
 
 function getDaysOfMonth(){
   var days = new Date(currentYear, currentMonth +1, 0);
@@ -112,7 +119,7 @@ function backMonth(){
 
 
 
-const DatePaginator = React.createClass({
+class DatePaginator extends React.Component{
 
 
   render() {
@@ -128,11 +135,11 @@ const DatePaginator = React.createClass({
       </div>
     );
   }
-});
+}
 
 
 
-const DayView = React.createClass({
+class DayView extends React.Component{
   render() {
     return (
       <div className="dayview">
@@ -140,12 +147,12 @@ const DayView = React.createClass({
       </div>
     );
   }
-});
+}
 
 
 
 
-const DayHours = React.createClass({
+class DayHours extends React.Component{
   render() {
     var timeboxes = [];
     for (var i = 0; i < prettyHours.length; i++){
@@ -157,9 +164,9 @@ const DayHours = React.createClass({
       </tbody>
     );
   }
-});
+}
 
-const DayContent = React.createClass({
+class DayContent extends React.Component{
   render() {
     var contentboxes = [];
     for (var i = 0; i < prettyHours.length; i++){
@@ -171,9 +178,9 @@ const DayContent = React.createClass({
       </tbody>
     );
   }
-});
+}
 
-const HourBox = React.createClass({
+class HourBox extends React.Component{
   render() {
     return (
       <div className="hourBox">
@@ -181,9 +188,9 @@ const HourBox = React.createClass({
       </div>
     );
   }
-});
+}
 
-const HourContent = React.createClass({
+class HourContent extends React.Component{
   render() {
     return (
       <div className="hourBoxContent">
@@ -191,14 +198,14 @@ const HourContent = React.createClass({
       </div>
     );
   }
-});
+}
 
 
 
 //***************************Month Stuff**********************//
 
 
-const MonthRow = React.createClass({
+class MonthRow extends React.Component{
   render() {
     var monthDayBoxArray = [];
     for (var i = 1; i < 8; i++){
@@ -210,13 +217,13 @@ const MonthRow = React.createClass({
       </div>
     );
   }
-});
+}
 
-const MonthGrid = React.createClass({
+class MonthGrid extends React.Component{
   render() {
     var monthRowArray = [];
     for (var i  = 0; i < 5; i++){
-      monthRowArray.push(<MonthRow monthRowNumber={i} />);
+      monthRowArray.push(<MonthRow key={i} monthRowNumber={i} />);
     }
     return (
       <div className="monthGrid">
@@ -225,9 +232,9 @@ const MonthGrid = React.createClass({
       </div>
     );
   }
-});
+}
 
-const MonthDayBox = React.createClass({
+class MonthDayBox extends React.Component{
   render () {
     if (this.props.dayBoxNumber == d.getDate()){
       return (
@@ -243,9 +250,9 @@ const MonthDayBox = React.createClass({
       );
     }
   }
-});
+}
 
-const MonthDaysHeader = React.createClass({
+class MonthDaysHeader extends React.Component{
   render() {
 
     return(
@@ -262,7 +269,7 @@ const MonthDaysHeader = React.createClass({
       </div>
     );
   }
-});
+}
 
 
 
