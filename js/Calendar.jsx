@@ -1,4 +1,7 @@
+import React from "react";
+import ReactDOM from "react-dom"
 //Variables will go here:
+
 var d = new Date();
 
 const monthNames = ["January", "February", "March", "April", "May", "June",
@@ -14,7 +17,7 @@ var currentMonth = d.getMonth();
 var currentYear = d.getUTCFullYear();
 var currentMonthName = monthNames[currentMonth];
 
-class App extends React.Component{
+export default class App extends React.Component{
     render() {
         return (
             <div className="content">
@@ -291,13 +294,3 @@ class MonthDaysHeader extends React.Component{
     );
   }
 }
-
-
-
-
-
-ReactDOM.render(
-    <App/>,
-    document.getElementById('app')
-
-);
