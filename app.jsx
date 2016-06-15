@@ -77,17 +77,10 @@ class ViewSelectorButtons extends React.Component{
 
 
 class DateRange extends React.Component{
-  constructor(){
-    super();
-    this.state = {
-      month: monthNames[currentMonth],
-      year: currentYear,
-    };
-  }
   render () {
     return (
       <div className="dateRange">
-          {this.state.month + " " + this.state.year }
+          {this.props.month + " " + this.props.year }
       </div>
     );
   }
@@ -103,33 +96,54 @@ function getFirstDayofMonth(){
   return days.getDay();
 }
 
-function forwardMonth(){
-  if (currentMonth < 11){
-    currentMonth += 1;
-  }else{
-    currentMonth = 0;
-    currentYear +=1;
-  }
 
-  console.log("Month: " + monthNames[currentMonth] + "\n Days: " + getDaysOfMonth() + "\n Start: " + sundayWeek[getFirstDayofMonth()]);
-}
-function backMonth(){
-  currentMonth -= 1;
-}
 
 
 
 class DatePaginator extends React.Component{
+  constructor(){
+    super();
+    this.state = {
+      month: monthNames[currentMonth],
+      year: currentYear,
+    };
+  }
+
+  forwardMonth(){
+    if (currentMonth < 11){
+      currentMonth += 1;
+    }else{
+      currentMonth = 0;
+      currentYear +=1;
+    }
+    console.log("Month: " + monthNames[currentMonth] + "\n Days: " + getDaysOfMonth() + "\n Start: " + sundayWeek[getFirstDayofMonth()]);
+    this.setState({
+      month: monthNames[currentMonth],
+      year: currentYear,
+    });
+  }
+
+  backMonth(){
+    if (currentMonth < 2){
+      currentMonth = 12;
+    }else{
+      currentMonth -= 1;
+    }
+    this.setState({
+      month: monthNames[currentMonth],
+      year: currentYear,
+    });
+  }
 
 
   render() {
     return (
       <div className="datePaginator">
-        <button className="scheduleButtons" onClick={backMonth}>
+        <button className="scheduleButtons" onClick={this.backMonth.bind(this)}>
           <i className="material-icons">navigate_before</i>
         </button>
-        <DateRange />
-        <button className="scheduleButtons" id="scheduleForwardWeek" onClick={forwardMonth}>
+        <DateRange month={this.state.month} year={this.state.year}/>
+        <button className="scheduleButtons" id="scheduleForwardWeek" onClick={this.forwardMonth.bind(this)}>
           <i className="material-icons">navigate_next</i>
         </button>
       </div>
