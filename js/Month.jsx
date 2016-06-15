@@ -14,13 +14,17 @@ var currentMonth = d.getMonth();
 var currentYear = d.getUTCFullYear();
 var currentMonthName = monthNames[currentMonth];
 
+var selectedMonth = currentMonth;
+var selectedYear = currentYear;
+var selectedMonthName = currentMonthName;
+
 function getDaysOfMonth(){
-  var days = new Date(currentYear, currentMonth +1, 0);
+  var days = new Date(selectedYear, selectedMonth +1, 0);
   return days.getDate();
 }
 
 function getFirstDayofMonth(){
-  var days = new Date(currentYear, currentMonth, 1);
+  var days = new Date(selectedYear, selectedMonth, 1);
   return days.getDay();
 }
 
@@ -45,8 +49,8 @@ class MonthRow extends React.Component{
   render() {
     var monthDayBoxArray = [];
 
-    for (var i = 1; i < 8; i++){
-      monthDayBoxArray.push(<MonthDayBox dayBoxNumber={i + (this.props.monthRowNumber * 7)} />);
+    for (var i = 0; i < 7; i++){
+      monthDayBoxArray.push(<MonthDayBox key={i + (this.props.monthRowNumber * 7)} dayBoxNumber={i + (this.props.monthRowNumber * 7)} />);
     }
     return (
       <div className="monthRow">
@@ -58,26 +62,31 @@ class MonthRow extends React.Component{
 
 
 class MonthDayBox extends React.Component{
-  render () {
-    if (this.props.dayBoxNumber == d.getDate()){
-      return (
-        <div className="selectedMonthDaybox">
-          {this.props.dayBoxNumber}
-        </div>
-      );
-    }else if(this.props.dayBoxNumber > getDaysOfMonth()){
-      return (
-        <div className="greyedMonthDaybox">
+  componentWillMount() {
 
-        </div>
-      );
+    var nameOfClass;
+    var displayNumber;
+    if (getFirstDayofMonth() > this.props.dayBoxNumber){
+      nameOfClass = "greyedMonthDaybox";
+    }else if ((this.props.dayBoxNumber - getFirstDayofMonth() + 1)> getDaysOfMonth()){
+      nameOfClass = "greyedMonthDaybox";
     }else{
-      return (
-        <div className="monthDaybox">
-          {this.props.dayBoxNumber}
-        </div>
-      );
+      console.log("boom");
+      nameOfClass = "monthDaybox";
+      displayNumber = (this.props.dayBoxNumber - getFirstDayofMonth() + 1);
     }
+    console.log(displayNumber);
+    this.setState({
+      thing: displayNumber,
+      nameOfClass: nameOfClass,
+    });
+  }
+  render () {
+    return(
+      <div className={this.state.nameOfClass}>
+        {this.state.thing}
+      </div>
+    );
   }
 }
 
