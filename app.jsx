@@ -125,7 +125,8 @@ class DatePaginator extends React.Component{
 
   backMonth(){
     if (currentMonth < 2){
-      currentMonth = 12;
+      currentMonth = 11;
+      currentYear -= 1;
     }else{
       currentMonth -= 1;
     }
@@ -254,6 +255,12 @@ class MonthDayBox extends React.Component{
       return (
         <div className="selectedMonthDaybox">
           {this.props.dayBoxNumber}
+        </div>
+      );
+    }else if(this.props.dayBoxNumber > getDaysOfMonth()){
+      return (
+        <div className="greyedMonthDaybox">
+
         </div>
       );
     }else{

@@ -83,6 +83,16 @@
   flex: 1;
 }
 
+.greyedMonthDaybox{
+  color: grey;
+  background-color: lightgrey;
+  border-color: grey;
+  border-width: thin;
+  border-style: solid;
+  height: 10em;
+  flex: 1;
+}
+
 .monthDaysHeader{
   display: flex;
   flex-direction: row;
