@@ -26,7 +26,7 @@ export default class TitleBar extends React.Component{
             <i className="material-icons">today</i>
           </button>
           <DatePaginator />
-          <ViewSelectorButtons />
+          <ViewSelectorButtons changeDesiredView={this.props.changeDesiredView} />
       </div>
     );
   }
@@ -36,15 +36,20 @@ export default class TitleBar extends React.Component{
 
 class ViewSelectorButtons extends React.Component{
   render () {
+    /*
+    ()=>this.props.changeDesiredView("DayView")
+    method is the ES6 equivalent to
+    this.props.changeDesiredView.bind(this, "DayView")
+    */
     return (
         <div className="viewSelectorButtons">
-            <button className="scheduleViewButtons" >
+            <button className="scheduleViewButtons" onClick={()=>this.props.changeDesiredView("DayView")} >
                 <i className="material-icons w3-xxxlarge">view_day</i>
             </button>
-            <button className="scheduleViewButtons">
+            <button className="scheduleViewButtons" onClick={()=>this.props.changeDesiredView("WeekView")}>
                 <i className="material-icons w3-xxxlarge">view_week</i>
             </button>
-            <button className="scheduleViewButtons">
+            <button className="scheduleViewButtons" onClick={()=>this.props.changeDesiredView("MonthView")}>
                 <i className="material-icons w3-xxxlarge">view_module</i>
             </button>
         </div>

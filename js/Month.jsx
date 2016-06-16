@@ -73,11 +73,10 @@ class MonthDayBox extends React.Component{
       nameOfClass = "selectedMonthDaybox";
       displayNumber = (this.props.dayBoxNumber - getFirstDayofMonth() + 1);
     }else{
-      console.log("boom");
       nameOfClass = "monthDaybox";
       displayNumber = (this.props.dayBoxNumber - getFirstDayofMonth() + 1);
     }
-    console.log(displayNumber);
+    
     this.setState({
       thing: displayNumber,
       nameOfClass: nameOfClass,

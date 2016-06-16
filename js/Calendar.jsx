@@ -27,55 +27,34 @@ export default class Calendar extends React.Component{
   constructor(){
     super();
     this.state = {
-      showMonthView: true,
-      showWeekView: false,
-      showDayView: false,
+      desiredView: "MonthView",
     }
   }
 
-  setMonthView(){
-    this.setState({
-      showMonthView: true,
-      showWeekView: false,
-      showDayView: false,
-    });
+  changeDesiredView(desiredView){
+    console.log(desiredView);
+    this.setState({desiredView});
   }
 
-  setWeekView(){
-    this.setState({
-      showMonthView: false,
-      showWeekView: true,
-      showDayView: false,
-    });
-  }
-
-  setDayView(){
-    this.setState({
-      showMonthView: false,
-      showWeekView: false,
-      showDayView: true,
-    });
-  }
 
   render() {
-    if (this.state.showWeekView == true){
+    if (this.state.desiredView == ("WeekView")){
       return (
           <div className="content">
-            <TitleBar />
+            <TitleBar changeDesiredView={this.changeDesiredView.bind(this)} />
           </div>
       );
-    }else if (this.state.showDayView == true){
+    }else if (this.state.desiredView == ("DayView")){
       return (
           <div className="content">
-            <TitleBar />
+            <TitleBar changeDesiredView={this.changeDesiredView.bind(this)} />
+            <DayView />
           </div>
       );
     }else{
-      console.log("monthView");
-      console.log(this.state.showMonthView);
       return (
           <div className="content">
-            <TitleBar />
+            <TitleBar changeDesiredView={this.changeDesiredView.bind(this)} />
             <MonthView />
           </div>
       );
