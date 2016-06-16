@@ -126,3 +126,13 @@
   border-width: thin;
   border-style: solid;
 }
+
+.dayview{
+  display: flex;
+  flex-direction: column;
+}
+
+.daygrid{
+  display: flex;
+  flex-direction: row;
+}

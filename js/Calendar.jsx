@@ -76,7 +76,7 @@ class MonthView extends React.Component{
 class DayView extends React.Component{
   render() {
     return (
-      <div className="dayview">
+      <div>
         <DayGrid />
       </div>
     );

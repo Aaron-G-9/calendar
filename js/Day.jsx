@@ -20,16 +20,28 @@ var selectedYear = currentYear;
 var currentMonthName = currentMonthName;
 
 
-export default class DayHours extends React.Component{
+export default class DayGrid extends React.Component{
+  render() {
+    return (
+      <div className="daygrid">
+        <DayHours />
+        <DayContent />
+      </div>
+    );
+  }
+}
+
+
+class DayHours extends React.Component{
   render() {
     var timeboxes = [];
     for (var i = 0; i < prettyHours.length; i++){
       timeboxes.push(<HourBox title={prettyHours[i]} />);
     }
     return (
-      <tbody>
+      <div className="dayview">
         {timeboxes}
-      </tbody>
+      </div>
     );
   }
 }
@@ -53,9 +65,9 @@ class DayContent extends React.Component{
       contentboxes.push(<HourContent />);
     }
     return (
-      <tbody>
+      <div>
         {contentboxes}
-      </tbody>
+      </div>
     );
   }
 }
