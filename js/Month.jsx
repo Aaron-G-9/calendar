@@ -63,13 +63,15 @@ class MonthRow extends React.Component{
 
 class MonthDayBox extends React.Component{
   componentWillMount() {
-
     var nameOfClass;
     var displayNumber;
     if (getFirstDayofMonth() > this.props.dayBoxNumber){
       nameOfClass = "greyedMonthDaybox";
     }else if ((this.props.dayBoxNumber - getFirstDayofMonth() + 1)> getDaysOfMonth()){
       nameOfClass = "greyedMonthDaybox";
+    }else if ((this.props.dayBoxNumber - getFirstDayofMonth() + 1) == d.getDate()){
+      nameOfClass = "selectedMonthDaybox";
+      displayNumber = (this.props.dayBoxNumber - getFirstDayofMonth() + 1);
     }else{
       console.log("boom");
       nameOfClass = "monthDaybox";
@@ -81,6 +83,8 @@ class MonthDayBox extends React.Component{
       nameOfClass: nameOfClass,
     });
   }
+
+
   render () {
     return(
       <div className={this.state.nameOfClass}>

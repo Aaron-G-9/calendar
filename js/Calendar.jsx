@@ -24,30 +24,67 @@ var selectedYear = currentYear;
 var currentMonthName = currentMonthName;
 
 export default class Calendar extends React.Component{
-    render() {
-        return (
-            <div className="content">
-                <Everything />
-            </div>
-        );
+  constructor(){
+    super();
+    this.state = {
+      showMonthView: true,
+      showWeekView: false,
+      showDayView: false,
     }
-}
+  }
 
+  setMonthView(){
+    this.setState({
+      showMonthView: true,
+      showWeekView: false,
+      showDayView: false,
+    });
+  }
 
+  setWeekView(){
+    this.setState({
+      showMonthView: false,
+      showWeekView: true,
+      showDayView: false,
+    });
+  }
 
+  setDayView(){
+    this.setState({
+      showMonthView: false,
+      showWeekView: false,
+      showDayView: true,
+    });
+  }
 
-class Everything extends React.Component{
   render() {
-    return (
-      <div>
-          <TitleBar />
-          <Month />
-      </div>
-    );
+    if (this.state.showWeekView == true){
+      return (
+          <div className="content">
+            <TitleBar />
+          </div>
+      );
+    }else if (this.state.showDayView == true){
+      return (
+          <div className="content">
+            <TitleBar />
+          </div>
+      );
+    }else{
+      console.log("monthView");
+      console.log(this.state.showMonthView);
+      return (
+          <div className="content">
+            <TitleBar />
+            <MonthView />
+          </div>
+      );
+    }
+
   }
 }
 
-class Month extends React.Component{
+class MonthView extends React.Component{
 
   render(){
     return(
