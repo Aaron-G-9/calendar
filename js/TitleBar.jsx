@@ -11,11 +11,9 @@ var sundayWeek = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Frida
 
 var currentMonth = d.getMonth();
 var currentYear = d.getUTCFullYear();
+var currentDay = d.getDate();
 var currentMonthName = monthNames[currentMonth];
 
-var selectedMonth = currentMonth;
-var selectedYear = currentYear;
-var currentMonthName = currentMonthName;
 
 
 export default class TitleBar extends React.Component{
@@ -25,7 +23,7 @@ export default class TitleBar extends React.Component{
           <button className="scheduleButtons">
             <i className="material-icons">today</i>
           </button>
-          <DatePaginator />
+          <DatePaginator changeDateSelection={this.props.changeDateSelection} />
           <ViewSelectorButtons changeDesiredView={this.props.changeDesiredView} />
       </div>
     );
@@ -60,13 +58,7 @@ class ViewSelectorButtons extends React.Component{
 
 
 class DatePaginator extends React.Component{
-  constructor(){
-    super();
-    this.state = {
-      month: monthNames[currentMonth],
-      year: currentYear,
-    };
-  }
+
 
   forwardMonth(){
     if (currentMonth < 11){
@@ -76,24 +68,18 @@ class DatePaginator extends React.Component{
       currentYear +=1;
     }
 
-    this.setState({
-      month: monthNames[currentMonth],
-      year: currentYear,
-    });
+    this.props.changeDateSelection(currentMonth, currentDay, currentYear );
   }
 
   backMonth(){
-    if (currentMonth < 2){
+    if (currentMonth < 1){
       currentMonth = 11;
       currentYear -= 1;
     }else{
       currentMonth -= 1;
     }
-    this.setState({
-      month: monthNames[currentMonth],
-      year: currentYear,
-    });
-  }
+    this.props.changeDateSelection(currentMonth, currentDay, currentYear);
+    }
 
 
   render() {
@@ -102,7 +88,7 @@ class DatePaginator extends React.Component{
         <button className="scheduleButtons" onClick={this.backMonth.bind(this)}>
           <i className="material-icons">navigate_before</i>
         </button>
-        <DateRange month={this.state.month} year={this.state.year}/>
+        <DateRange month={monthNames[currentMonth]} year={currentYear}/>
         <button className="scheduleButtons" id="scheduleForwardWeek" onClick={this.forwardMonth.bind(this)}>
           <i className="material-icons">navigate_next</i>
         </button>

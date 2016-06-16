@@ -40,6 +40,7 @@ export default class Calendar extends React.Component{
   }
 
   changeDateSelection(month, year, day){
+    console.log(month + " " + year + " " + day);
     this.setState({
       selectedMonth: month,
       selectedDay: day,
@@ -47,6 +48,11 @@ export default class Calendar extends React.Component{
     });
   }
 
+  getDateSelection(){
+    return(
+      this.state
+    );
+  }
 
   render() {
     if (this.state.desiredView == ("WeekView")){
@@ -66,7 +72,7 @@ export default class Calendar extends React.Component{
       return (
           <div className="content">
             <TitleBar changeDesiredView={this.changeDesiredView.bind(this)} changeDateSelection={this.changeDateSelection.bind(this)} />
-            <MonthView changeDateSelection={this.changeDateSelection.bind(this)} />
+            <MonthView getDateSelection={this.getDateSelection.bind(this)} changeDateSelection={this.changeDateSelection.bind(this)}  />
           </div>
       );
     }
@@ -79,7 +85,7 @@ class MonthView extends React.Component{
   render(){
     return(
     <div className="mainContent">
-      <MonthGrid />
+      <MonthGrid getDateSelection={this.props.getDateSelection} />
     </div>);
   }
 }

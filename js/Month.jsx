@@ -10,30 +10,17 @@ const prettyHours = ["All Day", "7am", "8am", "9am", "10am", "11am", "12am", "1p
     "2pm", "3pm", "4pm", "5pm", "6pm", "7pm", "8pm", "9pm", "10pm", "11pm"];
 
 var sundayWeek = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-var currentMonth = d.getMonth();
-var currentYear = d.getUTCFullYear();
-var currentMonthName = monthNames[currentMonth];
 
-var selectedMonth = currentMonth;
-var selectedYear = currentYear;
-var selectedMonthName = currentMonthName;
 
-function getDaysOfMonth(){
-  var days = new Date(selectedYear, selectedMonth +1, 0);
-  return days.getDate();
-}
 
-function getFirstDayofMonth(){
-  var days = new Date(selectedYear, selectedMonth, 1);
-  return days.getDay();
-}
+
 
 
 export default class MonthGrid extends React.Component{
   render() {
     var monthRowArray = [];
-    for (var i  = 0; i < 5; i++){
-      monthRowArray.push(<MonthRow key={i} monthRowNumber={i} />);
+    for (var i  = 0; i < 6; i++){
+      monthRowArray.push(<MonthRow key={i} monthRowNumber={i} changeDateSelection={this.props.changeDateSelection} getDateSelection={this.props.getDateSelection} />);
     }
     return (
       <div className="monthGrid">
@@ -50,7 +37,8 @@ class MonthRow extends React.Component{
     var monthDayBoxArray = [];
 
     for (var i = 0; i < 7; i++){
-      monthDayBoxArray.push(<MonthDayBox key={i + (this.props.monthRowNumber * 7)} dayBoxNumber={i + (this.props.monthRowNumber * 7)} />);
+      monthDayBoxArray.push(<MonthDayBox key={i + (this.props.monthRowNumber * 7)}
+        getDateSelection={this.props.getDateSelection} changeDateSelection={this.props.changeDateSelection}  dayBoxNumber={i + (this.props.monthRowNumber * 7)} />);
     }
     return (
       <div className="monthRow">
@@ -62,34 +50,36 @@ class MonthRow extends React.Component{
 
 
 class MonthDayBox extends React.Component{
-  componentWillMount() {
-    var nameOfClass;
-    var displayNumber;
-    if (getFirstDayofMonth() > this.props.dayBoxNumber){
-      nameOfClass = "greyedMonthDaybox";
-    }else if ((this.props.dayBoxNumber - getFirstDayofMonth() + 1)> getDaysOfMonth()){
-      nameOfClass = "greyedMonthDaybox";
-    }else if ((this.props.dayBoxNumber - getFirstDayofMonth() + 1) == d.getDate()){
-      nameOfClass = "selectedMonthDaybox";
-      displayNumber = (this.props.dayBoxNumber - getFirstDayofMonth() + 1);
-    }else{
-      nameOfClass = "monthDaybox";
-      displayNumber = (this.props.dayBoxNumber - getFirstDayofMonth() + 1);
-    }
-    
-    this.setState({
-      thing: displayNumber,
-      nameOfClass: nameOfClass,
-    });
+  getDaysOfMonth(){
+    var days = new Date(this.props.getDateSelection().selectedYear, this.props.getDateSelection().selectedMonth +1, 0);
+    console.log(days.getDate());
+    return days.getDate();
+  }
+
+  getFirstDayofMonth(){
+    var days = new Date(this.props.getDateSelection().selectedYear, this.props.getDateSelection().selectedMonth, 1);
+    return days.getDay();
   }
 
 
   render () {
-    return(
-      <div className={this.state.nameOfClass}>
-        {this.state.thing}
-      </div>
-    );
+    if(this.getFirstDayofMonth() > this.props.dayBoxNumber){
+      return(
+        <div className="greyedMonthDaybox">
+        </div>
+      );
+    }else if ((this.props.dayBoxNumber - this.getFirstDayofMonth() + 1)> this.getDaysOfMonth()){
+      return(
+        <div className="greyedMonthDaybox">
+        </div>
+      );
+    }else{
+      return(
+        <div className="monthDaybox">
+          {(this.props.dayBoxNumber - this.getFirstDayofMonth() + 1)}
+        </div>
+      );
+    }
   }
 }
 
