@@ -17,23 +17,34 @@ var sundayWeek = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Frida
 
 var currentMonth = d.getMonth();
 var currentYear = d.getUTCFullYear();
+var currentDay = d.getDay();
 var currentMonthName = monthNames[currentMonth];
 
-var selectedMonth = currentMonth;
-var selectedYear = currentYear;
-var currentMonthName = currentMonthName;
+
 
 export default class Calendar extends React.Component{
   constructor(){
     super();
     this.state = {
       desiredView: "MonthView",
+      selectedMonth: currentMonth,
+      selectedYear: currentYear,
+      selectedDay: currentDay,
     }
   }
 
   changeDesiredView(desiredView){
     console.log(desiredView);
+    console.log(selectedMonth);
     this.setState({desiredView});
+  }
+
+  changeDateSelection(month, year, day){
+    this.setState({
+      selectedMonth: month,
+      selectedDay: day,
+      selectedYear: year,
+    });
   }
 
 
@@ -41,21 +52,21 @@ export default class Calendar extends React.Component{
     if (this.state.desiredView == ("WeekView")){
       return (
           <div className="content">
-            <TitleBar changeDesiredView={this.changeDesiredView.bind(this)} />
+            <TitleBar changeDesiredView={this.changeDesiredView.bind(this)} changeDateSelection={this.changeDateSelection.bind(this)} />
           </div>
       );
     }else if (this.state.desiredView == ("DayView")){
       return (
           <div className="content">
-            <TitleBar changeDesiredView={this.changeDesiredView.bind(this)} />
-            <DayView />
+            <TitleBar changeDesiredView={this.changeDesiredView.bind(this)} changeDateSelection={this.changeDateSelection.bind(this)} />
+            <DayView changeDateSelection={this.changeDateSelection.bind(this)} />
           </div>
       );
     }else{
       return (
           <div className="content">
-            <TitleBar changeDesiredView={this.changeDesiredView.bind(this)} />
-            <MonthView />
+            <TitleBar changeDesiredView={this.changeDesiredView.bind(this)} changeDateSelection={this.changeDateSelection.bind(this)} />
+            <MonthView changeDateSelection={this.changeDateSelection.bind(this)} />
           </div>
       );
     }

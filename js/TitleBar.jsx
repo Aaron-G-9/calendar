@@ -58,19 +58,6 @@ class ViewSelectorButtons extends React.Component{
 }
 
 
-class DateRange extends React.Component{
-  render () {
-    return (
-      <div className="dateRange">
-          {this.props.month + " " + this.props.year }
-      </div>
-    );
-  }
-}
-
-
-
-
 
 class DatePaginator extends React.Component{
   constructor(){
@@ -119,6 +106,17 @@ class DatePaginator extends React.Component{
         <button className="scheduleButtons" id="scheduleForwardWeek" onClick={this.forwardMonth.bind(this)}>
           <i className="material-icons">navigate_next</i>
         </button>
+      </div>
+    );
+  }
+}
+
+
+class DateRange extends React.Component{
+  render () {
+    return (
+      <div className="dateRange">
+          {this.props.month + " " + this.props.year }
       </div>
     );
   }

@@ -17,7 +17,7 @@ var currentMonthName = monthNames[currentMonth];
 
 var selectedMonth = currentMonth;
 var selectedYear = currentYear;
-var currentMonthName = currentMonthName;
+var selectedMonthName = currentMonthName;
 
 
 export default class DayGrid extends React.Component{
@@ -37,6 +37,7 @@ class DayHours extends React.Component{
     var timeboxes = [];
     for (var i = 0; i < prettyHours.length; i++){
       timeboxes.push(<HourBox title={prettyHours[i]} />);
+      timeboxes[i] = (<HourBox title={prettyHours[i]} />);
     }
     return (
       <div className="dayview">
