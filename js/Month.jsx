@@ -19,6 +19,8 @@ var sundayWeek = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Frida
 export default class MonthGrid extends React.Component{
   render() {
     var monthRowArray = [];
+    var days = new Date();
+    console.log("Hello " + days);
     for (var i  = 0; i < 6; i++){
       monthRowArray.push(<MonthRow key={i} monthRowNumber={i} changeDateSelection={this.props.changeDateSelection} getDateSelection={this.props.getDateSelection} />);
     }
@@ -52,7 +54,6 @@ class MonthRow extends React.Component{
 class MonthDayBox extends React.Component{
   getDaysOfMonth(){
     var days = new Date(this.props.getDateSelection().selectedYear, this.props.getDateSelection().selectedMonth +1, 0);
-    console.log(days.getDate());
     return days.getDate();
   }
 
@@ -63,9 +64,18 @@ class MonthDayBox extends React.Component{
 
 
   render () {
+    //console.log(this.props.getDateSelection());
+    //console.log("First Day of Month: " + this.getFirstDayofMonth());
     if(this.getFirstDayofMonth() > this.props.dayBoxNumber){
       return(
         <div className="greyedMonthDaybox">
+          boom
+        </div>
+      );
+    }else if ((this.props.dayBoxNumber - this.getFirstDayofMonth() + 1) == d.getDate()){
+      return(
+        <div className="selectedMonthDaybox">
+          {(this.props.dayBoxNumber - this.getFirstDayofMonth() + 1)}
         </div>
       );
     }else if ((this.props.dayBoxNumber - this.getFirstDayofMonth() + 1)> this.getDaysOfMonth()){

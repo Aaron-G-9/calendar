@@ -68,7 +68,7 @@ class DatePaginator extends React.Component{
       currentYear +=1;
     }
 
-    this.props.changeDateSelection(currentMonth, currentDay, currentYear );
+    this.props.changeDateSelection(currentMonth, currentYear, currentDay );
   }
 
   backMonth(){
@@ -78,7 +78,7 @@ class DatePaginator extends React.Component{
     }else{
       currentMonth -= 1;
     }
-    this.props.changeDateSelection(currentMonth, currentDay, currentYear);
+    this.props.changeDateSelection(currentMonth, currentYear, currentDay);
     }
 
 

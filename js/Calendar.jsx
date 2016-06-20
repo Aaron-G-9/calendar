@@ -4,7 +4,7 @@ import DayGrid from "./Day.jsx"
 import TitleBar from "./TitleBar.jsx"
 //Variables will go here:
 
-var d = new Date();
+
 
 const monthNames = ["January", "February", "March", "April", "May", "June",
 "July", "August", "September", "October", "November", "December"
@@ -15,9 +15,10 @@ const prettyHours = ["All Day", "7am", "8am", "9am", "10am", "11am", "12am", "1p
 
 var sundayWeek = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
 
+var d = new Date();
 var currentMonth = d.getMonth();
 var currentYear = d.getUTCFullYear();
-var currentDay = d.getDay();
+var currentDay = d.getDate();
 var currentMonthName = monthNames[currentMonth];
 
 
@@ -35,7 +36,7 @@ export default class Calendar extends React.Component{
 
   changeDesiredView(desiredView){
     console.log(desiredView);
-    console.log(selectedMonth);
+    console.log(this.state.selectedMonth);
     this.setState({desiredView});
   }
 
