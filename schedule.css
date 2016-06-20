@@ -125,7 +125,8 @@ html,body{
 }
 
 .hourBoxContent{
-  width: 200em;
+  flex: 1 auto;
+  min-width: 10em;
   height: 3.3em;
   background-color: transparent;
   border-color: black;
@@ -140,5 +141,13 @@ html,body{
 
 .daygrid{
   display: flex;
+  justify-content: flex-start;
+  flex: 1;
+}
+
+.weekContent{
+  display: flex;
+  
   flex-direction: row;
+  flex: 1;
 }
