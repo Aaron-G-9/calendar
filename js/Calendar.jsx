@@ -57,6 +57,17 @@ export default class Calendar extends React.Component{
   }
 
   render() {
+
+
+
+  fetch("../jsonTesting.json")
+    .then(function(response){
+      return response.json();
+    }).then(function(j){
+      console.log(j);
+    });
+
+
     if (this.state.desiredView == ("WeekView")){
       return (
           <div className="content">

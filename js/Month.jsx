@@ -12,10 +12,6 @@ const prettyHours = ["All Day", "7am", "8am", "9am", "10am", "11am", "12am", "1p
 var sundayWeek = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
 
 
-
-
-
-
 export default class MonthGrid extends React.Component{
   render() {
     var monthRowArray = [];
@@ -71,7 +67,7 @@ class MonthDayBox extends React.Component{
         <div className="greyedMonthDaybox">
         </div>
       );
-    }else if ((this.props.dayBoxNumber - this.getFirstDayofMonth() + 1) == d.getDate()){
+    }else if ((this.props.dayBoxNumber - this.getFirstDayofMonth() + 1) == d.getDate() && this.props.getDateSelection().selectedMonth == d.getMonth()){
       return(
         <div className="selectedMonthDaybox">
           {(this.props.dayBoxNumber - this.getFirstDayofMonth() + 1)}
@@ -94,18 +90,13 @@ class MonthDayBox extends React.Component{
 
 class MonthDaysHeader extends React.Component{
   render() {
-
+    var daysHeader = [];
+    for (var i = 0; i < sundayWeek.length; i++){
+      daysHeader.push(<div>{sundayWeek[i]}</div>);
+    }
     return(
       <div className="monthDaysHeader">
-
-          <div>{sundayWeek[0]}</div>
-          <div>{sundayWeek[1]}</div>
-          <div>{sundayWeek[2]}</div>
-          <div>{sundayWeek[3]}</div>
-          <div>{sundayWeek[4]}</div>
-          <div>{sundayWeek[5]}</div>
-          <div>{sundayWeek[6]}</div>
-
+        {daysHeader}
       </div>
     );
   }
