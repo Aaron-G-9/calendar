@@ -32,7 +32,27 @@ export default class Calendar extends React.Component{
       selectedMonth: currentMonth,
       selectedYear: currentYear,
       selectedDay: currentDay,
+      courseObject: "empty",
     }
+  }
+
+  fetchCourseInfo(){
+    fetch("../jsonTesting.json")
+    .then(function(response){
+      return response.json();
+    }).then(function(j){
+      console.log(j.myCourses[0].courseInformation[0].courseMeetings[0].startDate);
+      var newDate = new Date(j.myCourses[0].courseInformation[0].courseMeetings[0].startDate);
+      var newerDate = new Date(j.myCourses[0].courseInformation[0].courseMeetings[0].endDate);
+      console.log(newDate.toGMTString());
+      console.log("StartDate:");
+      console.log("Month: " + newDate.getMonth() + " dayOfMonth: " + newDate.getDate() + " dayOfWeek: " + newDate.getDay());
+      console.log("EndDate:");
+      console.log("Month: " + newerDate.getMonth() + " dayOfMonth: " + newerDate.getDate() + " dayOfWeek: " + newerDate.getDay());
+      this.setState({
+        courseObject: j,
+      });
+    }.bind(this));
   }
 
   changeDesiredView(desiredView){
@@ -57,17 +77,8 @@ export default class Calendar extends React.Component{
   }
 
   render() {
-
-
-
-  fetch("../jsonTesting.json")
-    .then(function(response){
-      return response.json();
-    }).then(function(j){
-      console.log(j);
-    });
-
-
+    this.fetchCourseInfo;
+    console.log("State \n" + this.state.courseObject);
     if (this.state.desiredView == ("WeekView")){
       return (
           <div className="content">

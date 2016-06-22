@@ -1,5 +1,5 @@
 import React from "react";
-
+import MonthBoxContent from  "./MonthBoxContent.jsx";
 
 var d = new Date();
 const monthNames = ["January", "February", "March", "April", "May", "June",
@@ -82,6 +82,8 @@ class MonthDayBox extends React.Component{
       return(
         <div className="monthDaybox">
           {(this.props.dayBoxNumber - this.getFirstDayofMonth() + 1)}
+          <MonthBoxContent dayNumber={this.props.daysHeader}/>
+
         </div>
       );
     }
