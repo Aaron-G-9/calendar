@@ -36,19 +36,11 @@ export default class Calendar extends React.Component{
     }
   }
 
-  fetchCourseInfo(){
+  componentWillMount(){
     fetch("../jsonTesting.json")
     .then(function(response){
       return response.json();
     }).then(function(j){
-      console.log(j.myCourses[0].courseInformation[0].courseMeetings[0].startDate);
-      var newDate = new Date(j.myCourses[0].courseInformation[0].courseMeetings[0].startDate);
-      var newerDate = new Date(j.myCourses[0].courseInformation[0].courseMeetings[0].endDate);
-      console.log(newDate.toGMTString());
-      console.log("StartDate:");
-      console.log("Month: " + newDate.getMonth() + " dayOfMonth: " + newDate.getDate() + " dayOfWeek: " + newDate.getDay());
-      console.log("EndDate:");
-      console.log("Month: " + newerDate.getMonth() + " dayOfMonth: " + newerDate.getDate() + " dayOfWeek: " + newerDate.getDay());
       this.setState({
         courseObject: j,
       });
@@ -77,8 +69,8 @@ export default class Calendar extends React.Component{
   }
 
   render() {
-    this.fetchCourseInfo;
-    console.log("State \n" + this.state.courseObject);
+
+    console.log(this.state.courseObject);
     if (this.state.desiredView == ("WeekView")){
       return (
           <div className="content">
