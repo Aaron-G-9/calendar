@@ -71,7 +71,7 @@ html,body{
 
 .monthDaybox{
   background-color: white;
-  border-color: black;
+  border-color: grey;
   border-width: thin;
   border-style: solid;
   min-height: 4em;
@@ -154,14 +154,15 @@ html,body{
 .monthBoxContent{
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+
 }
 
 .eventButton{
   flex: 1;
   opacity: .67;
+  text-align: left;
   outline: 0;
   border-style: none;
   color: green;
-  background-color: white;
+  background-color: transparent;
 }

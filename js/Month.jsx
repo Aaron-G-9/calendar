@@ -18,7 +18,7 @@ export default class MonthGrid extends React.Component{
     var days = new Date();
     console.log("Hello " + days);
     for (var i  = 0; i < 6; i++){
-      monthRowArray.push(<MonthRow key={i} monthRowNumber={i} changeDateSelection={this.props.changeDateSelection} getDateSelection={this.props.getDateSelection} />);
+      monthRowArray.push(<MonthRow key={i} monthRowNumber={i} changeDateSelection={this.props.changeDateSelection} getDateSelection={this.props.getDateSelection} courseObject={this.props.courseObject}/>);
     }
     return (
       <div className="monthGrid">
@@ -36,7 +36,7 @@ class MonthRow extends React.Component{
 
     for (var i = 0; i < 7; i++){
       monthDayBoxArray.push(<MonthDayBox key={i + (this.props.monthRowNumber * 7)}
-        getDateSelection={this.props.getDateSelection} changeDateSelection={this.props.changeDateSelection}  dayBoxNumber={i + (this.props.monthRowNumber * 7)} />);
+        getDateSelection={this.props.getDateSelection} changeDateSelection={this.props.changeDateSelection}  dayBoxNumber={i + (this.props.monthRowNumber * 7)} courseObject={this.props.courseObject}/>);
     }
     return (
       <div className="monthRow">
@@ -82,8 +82,7 @@ class MonthDayBox extends React.Component{
       return(
         <div className="monthDaybox">
           {(this.props.dayBoxNumber - this.getFirstDayofMonth() + 1)}
-          <MonthBoxContent dayNumber={this.props.daysHeader}/>
-
+          <MonthBoxContent dayNumber={this.props.daysHeader} courseObject={this.props.courseObject} getDateSelection={this.props.getDateSelection}/>
         </div>
       );
     }

@@ -86,10 +86,11 @@ export default class Calendar extends React.Component{
           </div>
       );
     }else{
+      //Return MonthView
       return (
           <div className="content">
             <TitleBar changeDesiredView={this.changeDesiredView.bind(this)} changeDateSelection={this.changeDateSelection.bind(this)} />
-            <MonthView getDateSelection={this.getDateSelection.bind(this)} changeDateSelection={this.changeDateSelection.bind(this)}  />
+            <MonthView getDateSelection={this.getDateSelection.bind(this)} changeDateSelection={this.changeDateSelection.bind(this)}  courseObject={this.state.courseObject}/>
           </div>
       );
     }
@@ -102,7 +103,7 @@ class MonthView extends React.Component{
   render(){
     return(
     <div className="mainContent">
-      <MonthGrid getDateSelection={this.props.getDateSelection} />
+      <MonthGrid getDateSelection={this.props.getDateSelection} courseObject={this.props.courseObject}/>
     </div>);
   }
 }
