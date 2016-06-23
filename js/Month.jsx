@@ -36,7 +36,7 @@ class MonthRow extends React.Component{
 
     for (var i = 0; i < 7; i++){
       monthDayBoxArray.push(<MonthDayBox key={i + (this.props.monthRowNumber * 7)}
-        getDateSelection={this.props.getDateSelection} changeDateSelection={this.props.changeDateSelection}  dayBoxNumber={i + (this.props.monthRowNumber * 7)} courseObject={this.props.courseObject}/>);
+        getDateSelection={this.props.getDateSelection} changeDateSelection={this.props.changeDateSelection} dayOfWeek={i} dayBoxNumber={i + (this.props.monthRowNumber * 7)} courseObject={this.props.courseObject}/>);
     }
     return (
       <div className="monthRow">
@@ -82,7 +82,7 @@ class MonthDayBox extends React.Component{
       return(
         <div className="monthDaybox">
           {(this.props.dayBoxNumber - this.getFirstDayofMonth() + 1)}
-          <MonthBoxContent dayNumber={this.props.daysHeader} courseObject={this.props.courseObject} getDateSelection={this.props.getDateSelection}/>
+          <MonthBoxContent  dayOfWeek={this.props.dayOfWeek} dayNumber={this.props.dayBoxNumber - this.getFirstDayofMonth()} courseObject={this.props.courseObject} getDateSelection={this.props.getDateSelection}/>
         </div>
       );
     }
