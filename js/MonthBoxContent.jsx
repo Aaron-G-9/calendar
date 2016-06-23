@@ -2,30 +2,58 @@ import React, { PropTypes } from 'react';
 import ContentCreator from './ContentCreator.js';
 export default class MonthBoxContent extends React.Component{
   kaboom(){
-    alert('splosions');
+
   }
 
   render () {
     if (this.props.courseObject != "empty"){
       var content = new ContentCreator(this.props.courseObject);
-      //content.getTitle();
-      //content.getStartDate();
-      //content.getEndDate();
-      //content.getStartTime();
-      //console.log("THIS IS START DATE: " + content.getStartDate());
-      //console.log("SELECTED MONTH: " + this.props.getDateSelection().selectedMonth);
-      //console.log("THIS IS END DATE: " + content.getEndDate());
+
+      //If it is the months in between the start and end months of the class
       if (content.getStartDate() < this.props.getDateSelection().selectedMonth
         && content.getEndDate() > this.props.getDateSelection().selectedMonth){
-          //console.log(this.props.dayBoxNumber);
-          console.log("THIS IS ALL TRUE!!!");
+
+          if (content.getMeetDays()[this.props.dayOfWeek] == true){
+            return (
+              <div className="monthBoxContent">
+                <button className="eventButton" onClick={this.kaboom}>
+                  {content.getShortName()}
+                  <b>{content.getStartTimeInfo("string")}</b>
+                </button>
+
+              </div>
+            );
+          }else{
+            return (
+              <div>
+
+              </div>
+            );
+          }
+
+
+
+
+
+          /*console.log(content.getMeetDays());
+          console.log(content.getStartTime());
+          console.log(this.props.dayNumber);
+          console.log(this.props.dayOfWeek);*/
+
+
+      }else{
+        return(
+          <div>
+
+          </div>
+        );
       }
+
+    }else{
+      return(
+        <div></div>
+      );
     }
-    return (
-      <div className="monthBoxContent">
-        <button className="eventButton" onClick={this.kaboom}>All the days...</button>
-        <button className="eventButton">7 Computer Science</button>
-      </div>
-    );
+
   }
 }

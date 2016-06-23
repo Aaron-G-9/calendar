@@ -8,9 +8,6 @@
     box-shadow: 0px 5px 15px 0px rgba(0,0,0,0.5);
 }
 
-html,body{
-   overflow:visible;
-   }
 
 .material-icons{
   float: center;
@@ -158,11 +155,13 @@ html,body{
 }
 
 .eventButton{
-  flex: 1;
+  display: flex;
+  justify-content: space-between;
   opacity: .67;
   text-align: left;
   outline: 0;
   border-style: none;
-  color: green;
-  background-color: transparent;
+  background-color: lightgreen;
+  color: darkgreen;
+  margin-top: .3em;
 }

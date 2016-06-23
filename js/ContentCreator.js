@@ -26,11 +26,33 @@ export default class ContentCreator{
     return date.getMonth();
   }
 
-  getStartTime(){
+  getStartTimeInfo(request){
     var date = new Date(this.jsonObject.myCourses[0].courseInformation[1].courseMeetings[0].startTime);
-    return date.getHours();
-    //console.log(date);
+    var hours = date.getHours();
+    var minutes = date.getMinutes();
+    if (minutes == 0){
+      minutes = "";
+    }else{
+      minutes = (":" + minutes);
+    }
+    if (request === "hours"){
+      return hours;
+    }else if (request === "minutes"){
+      return minutes;
+    }else if (request === "string"){
+      var hours;
+      if(hours > 12){
+        hours = hours - 12;
+        return (hours + minutes + "pm");
+      }else if (hours == 12){
+        return (hours +  minutes + "pm");
+      }else{
+        return (hours + minutes + "am");
+      }
+    }
+
   }
+
 
   getMeetDays(){
     var daysString = (this.jsonObject.myCourses[0].courseInformation[1].courseMeetings[0].meetDays);
