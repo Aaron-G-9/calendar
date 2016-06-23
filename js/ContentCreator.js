@@ -1,33 +1,34 @@
 
 export default class ContentCreator{
-  constructor(jsonObject){
+  constructor(jsonObject, classNumber){
     this.jsonObject = jsonObject;
+    this.classNumber = classNumber;
   }
 
   getTitle(){
-    return (this.jsonObject.myCourses[0].courseTitle);
+    return (this.jsonObject.myCourses[this.classNumber].courseTitle);
   }
 
   getShortName(){
-    var title = (this.jsonObject.myCourses[0].subjectCode + ' ' + this.jsonObject.myCourses[0].subjectNumber);
+    var title = (this.jsonObject.myCourses[this.classNumber].subjectCode + ' ' + this.jsonObject.myCourses[0].subjectNumber);
     return title;
   }
 
   getStartDate(){
     //console.log(this.jsonObject);
-    var date = new Date(this.jsonObject.myCourses[0].courseInformation[1].courseMeetings[0].startDate);
+    var date = new Date(this.jsonObject.myCourses[this.classNumber].courseInformation[0].courseMeetings[0].startDate);
     return date.getMonth();
     //console.log(date);
   }
 
   getEndDate(){
-    var date = new Date(this.jsonObject.myCourses[0].courseInformation[1].courseMeetings[0].endDate);
+    var date = new Date(this.jsonObject.myCourses[this.classNumber].courseInformation[0].courseMeetings[0].endDate);
     //console.log(date);
     return date.getMonth();
   }
 
   getStartTimeInfo(request){
-    var date = new Date(this.jsonObject.myCourses[0].courseInformation[1].courseMeetings[0].startTime);
+    var date = new Date(this.jsonObject.myCourses[this.classNumber].courseInformation[0].courseMeetings[0].startTime);
     var hours = date.getHours();
     var minutes = date.getMinutes();
     if (minutes == 0){
@@ -55,7 +56,7 @@ export default class ContentCreator{
 
 
   getMeetDays(){
-    var daysString = (this.jsonObject.myCourses[0].courseInformation[1].courseMeetings[0].meetDays);
+    var daysString = (this.jsonObject.myCourses[this.classNumber].courseInformation[0].courseMeetings[0].meetDays);
     var dayOfWeekArr = [false, false, false, false, false, false, false];
     for (var i = 0; i < daysString.length; i++){
       switch(daysString.substring(i, i+1)){
@@ -80,12 +81,12 @@ export default class ContentCreator{
   }
 
   getEndTime(){
-    var date = new Date(this.jsonObject.myCourses[0].courseInformation[1].courseMeetings[0].endTime)
+    var date = new Date(this.jsonObject.myCourses[this.classNumber].courseInformation[0].courseMeetings[0].endTime)
     console.log(date);
   }
 
   getBuilding(){
-    var building = this.jsonObject.myCourses[0].courseInformation[1].courseMeetings[0].buildingRoom;
+    var building = this.jsonObject.myCourses[this.classNumber].courseInformation[0].courseMeetings[0].buildingRoom;
     return building;
   }
 }
