@@ -6,9 +6,7 @@ const prettyHours = ["All Day", "7am", "8am", "9am", "10am", "11am", "12am", "1p
 export default class DayAndWeek extends React.Component{
   render() {
     return (
-      <div>
         <DayContent />
-      </div>
     );
   }
 }
@@ -20,7 +18,7 @@ class DayContent extends React.Component{
       contentboxes.push(<HourContent />);
     }
     return (
-      <div>
+      <div className="weekCol">
         {contentboxes}
       </div>
     );

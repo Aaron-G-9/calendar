@@ -1,5 +1,6 @@
 import React from "react";
 import MonthBoxContent from  "./MonthBoxContent.jsx";
+import MonthDaysHeader from "./MonthDaysHeader.jsx";
 
 var d = new Date();
 const monthNames = ["January", "February", "March", "April", "May", "June",
@@ -9,7 +10,6 @@ const monthNames = ["January", "February", "March", "April", "May", "June",
 const prettyHours = ["All Day", "7am", "8am", "9am", "10am", "11am", "12am", "1pm",
     "2pm", "3pm", "4pm", "5pm", "6pm", "7pm", "8pm", "9pm", "10pm", "11pm"];
 
-var sundayWeek = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
 
 
 export default class MonthGrid extends React.Component{
@@ -86,19 +86,5 @@ class MonthDayBox extends React.Component{
         </div>
       );
     }
-  }
-}
-
-class MonthDaysHeader extends React.Component{
-  render() {
-    var daysHeader = [];
-    for (var i = 0; i < sundayWeek.length; i++){
-      daysHeader.push(<div>{sundayWeek[i]}</div>);
-    }
-    return(
-      <div className="monthDaysHeader">
-        {daysHeader}
-      </div>
-    );
   }
 }
