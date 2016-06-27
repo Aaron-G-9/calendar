@@ -14,27 +14,38 @@ export default class ContentCreator{
     return title;
   }
 
-  getStartDate(){
+  getStartMonth(){
     //console.log(this.jsonObject);
     var date = new Date(this.jsonObject.myCourses[this.classNumber].courseInformation[0].courseMeetings[0].startDate);
     return date.getMonth();
     //console.log(date);
   }
 
-  getEndDate(){
+  getStartDay(){
+    var date = new Date(this.jsonObject.myCourses[this.classNumber].courseInformation[0].courseMeetings[0].startDate);
+    return date.getDate();
+  }
+
+  getEndMonth(){
     var date = new Date(this.jsonObject.myCourses[this.classNumber].courseInformation[0].courseMeetings[0].endDate);
     //console.log(date);
     return date.getMonth();
   }
+  getEndDay(){
+    var date = new Date(this.jsonObject.myCourses[this.classNumber].courseInformation[0].courseMeetings[0].endDate);
+    return date.getDate();
+  }
+
 
   getStartTimeInfo(request){
     var date = new Date(this.jsonObject.myCourses[this.classNumber].courseInformation[0].courseMeetings[0].startTime);
     var hours = date.getHours();
     var minutes = date.getMinutes();
+    var stringMinutes;
     if (minutes == 0){
-      minutes = "";
+      stringMinutes = "";
     }else{
-      minutes = (":" + minutes);
+      stringMinutes = (":" + minutes);
     }
     if (request === "hours"){
       return hours;
@@ -44,11 +55,11 @@ export default class ContentCreator{
       var hours;
       if(hours > 12){
         hours = hours - 12;
-        return (hours + minutes + "pm");
+        return (hours + stringMinutes + "pm");
       }else if (hours == 12){
-        return (hours +  minutes + "pm");
+        return (hours +  stringMinutes + "pm");
       }else{
-        return (hours + minutes + "am");
+        return (hours + stringMinutes + "am");
       }
     }
 
