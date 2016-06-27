@@ -117,19 +117,18 @@
   height: 3.3em;
   color: grey;
   background-color: transparent;
-  border-color: black;
+  border-color: grey;
   border-width: thin;
   border-style: solid;
 }
 
 .hourBoxContent{
   flex: 1 auto;
-  min-width: 10em;
   height: 3.3em;
   background-color: transparent;
-  border-color: black;
+  border-color: grey;
   border-width: thin;
-  border-style: solid;
+  border-style: dotted;
 }
 
 .dayview{
@@ -141,6 +140,19 @@
   display: flex;
   justify-content: flex-start;
   flex: 1;
+}
+
+.weekGrid{
+  display: flex;
+  justify-content: flex-start;
+  flex: 1;
+  flex-direction: column;
+}
+
+.weekCol{
+  display: flex;
+  flex: 1;
+  flex-direction: column;
 }
 
 .weekContent{
@@ -165,4 +177,15 @@
   background-color: lightgreen;
   color: darkgreen;
   margin-top: .3em;
+}
+
+.weekHeader{
+  background-color: white;
+  box-shadow: 0px 5px 15px 0px rgba(0,0,0,0.5);
+  display: flex;
+  justify-content: space-around;
+  font-weight: bold;
+  font-size: 1.3em;
+  padding-left: 3.3em;
+  
 }
