@@ -3,6 +3,7 @@ import MonthGrid from "./Month.jsx"
 import DayGrid from "./Day.jsx"
 import TitleBar from "./TitleBar.jsx"
 import WeekGrid from "./Week.jsx"
+import Fade from "react-bootstrap/lib/Fade"
 //Variables will go here:
 
 
@@ -75,7 +76,9 @@ export default class Calendar extends React.Component{
       return (
           <div className="content">
             <TitleBar changeDesiredView={this.changeDesiredView.bind(this)} changeDateSelection={this.changeDateSelection.bind(this)} />
-            <WeekGrid/>
+
+              <WeekGrid/>
+
           </div>
       );
     }else if (this.state.desiredView == ("DayView")){

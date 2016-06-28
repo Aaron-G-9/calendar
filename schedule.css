@@ -4,7 +4,7 @@
     justify-content: space-between;;
     background-color: #2196F3;
     width: fill;
-    height: 9em;
+    height: 7em;
     box-shadow: 0px 5px 15px 0px rgba(0,0,0,0.5);
 }
 
@@ -124,11 +124,13 @@
 
 .hourBoxContent{
   flex: 1 auto;
-  height: 3.3em;
+  height: 1.1em;
   background-color: transparent;
-  border-color: grey;
+  border-color: lightgrey;
   border-width: thin;
-  border-style: dotted;
+  border-style: solid;
+  border-top-color: lightgrey;
+  border-top-style: dashed;
 }
 
 .dayview{
@@ -186,6 +188,7 @@
   font-weight: bold;
   font-size: 1.3em;
   padding-left: 3.3em;
+
 }
 
 .weekFloater{
@@ -205,6 +208,21 @@
   align-items: center;
   padding-right: 2em;
   margin-bottom: 1em;
+}
+
+.abee{
+  height: 3.3em;
+  margin-left: 5em;
+  display: flex;
+  flex: 1;
+}
+
+.abcdefg{
+  display: flex;
+  flex: 1;
+  border-style: solid;
+  border-color: lightgrey;
+  border-width: thin;
 }
 
 #coursesPortlet-month-popover-time{

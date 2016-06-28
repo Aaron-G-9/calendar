@@ -1,6 +1,6 @@
 import React from "react";
 
-var sundayWeek = ["Sun", "Mon", "Tues", "Wed", "Thur", "Fri", "Sat"];
+var sundayWeek = ["Sun", "Mon", "Tue", "Wed", "Thur", "Fri", "Sat"];
 
 export default class MonthDaysHeader extends React.Component{
   render() {
