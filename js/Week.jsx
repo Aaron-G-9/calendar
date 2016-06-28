@@ -4,12 +4,13 @@ import DayAndWeekHours from "./DayAndWeekHours.jsx"
 import WeekHeader from "./WeekHeader.jsx";
 
 
+
 export default class WeekView extends React.Component{
   render () {
     return (
       <div className="weekGrid">
-          <WeekHeader />
-        <div>
+          <WeekFloater />
+        <div className="weekView">
           <DayAndWeekHours />
           <WeekContent />
         </div>
@@ -34,9 +35,12 @@ class WeekContent extends React.Component{
 
 class WeekFloater extends React.Component{
   render() {
+
+
     return (
-      <div>
-        <MonthDaysHeader/>
+      <div className="weekFloater">
+        <WeekHeader/>
+
       </div>
     );
   }
