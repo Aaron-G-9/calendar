@@ -65,6 +65,34 @@ export default class ContentCreator{
 
   }
 
+  getEndTimeInfo(request){
+    var date = new Date(this.jsonObject.myCourses[this.classNumber].courseInformation[0].courseMeetings[0].endTime);
+    var hours = date.getHours();
+    var minutes = date.getMinutes();
+    var stringMinutes;
+    if (minutes == 0){
+      stringMinutes = "";
+    }else if(minutes < 10){
+      stringMinutes = (":0" + minutes);
+    }else{
+      stringMinutes = (":" + minutes);
+    }
+    if (request === "hours"){
+      return hours;
+    }else if (request === "minutes"){
+      return minutes;
+    }else if (request === "string"){
+      var hours;
+      if(hours > 12){
+        hours = hours - 12;
+        return (hours + stringMinutes + "pm");
+      }else if (hours == 12){
+        return (hours +  stringMinutes + "pm");
+      }else{
+        return (hours + stringMinutes + "am");
+      }
+    }
+  }
 
   getMeetDays(){
     var daysString = (this.jsonObject.myCourses[this.classNumber].courseInformation[0].courseMeetings[0].meetDays);
@@ -91,10 +119,6 @@ export default class ContentCreator{
     return dayOfWeekArr;
   }
 
-  getEndTime(){
-    var date = new Date(this.jsonObject.myCourses[this.classNumber].courseInformation[0].courseMeetings[0].endTime)
-    console.log(date);
-  }
 
   getBuilding(){
     var building = this.jsonObject.myCourses[this.classNumber].courseInformation[0].courseMeetings[0].buildingRoom;

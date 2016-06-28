@@ -181,11 +181,32 @@
 
 .weekHeader{
   background-color: white;
-  box-shadow: 0px 5px 15px 0px rgba(0,0,0,0.5);
   display: flex;
   justify-content: space-around;
   font-weight: bold;
   font-size: 1.3em;
   padding-left: 3.3em;
-  
+}
+
+.weekFloater{
+  border-width: medium;
+  display: flex;
+  flex-direction: column;
+  box-shadow: 0px 5px 15px 0px rgba(0,0,0,0.5);
+}
+
+.weekView{
+  display: flex;
+}
+
+.popoverTime{
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding-right: 2em;
+  margin-bottom: 1em;
+}
+
+#coursesPortlet-month-popover-time{
+  margin-right: .5em;
 }

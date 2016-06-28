@@ -1,8 +1,9 @@
 import React, { PropTypes } from 'react';
 import ContentCreator from './ContentCreator.js';
+import OverlayTrigger from 'react-bootstrap/lib/OverlayTrigger';
+import Popover from 'react-bootstrap/lib/Popover';
+
 export default class MonthBoxContent extends React.Component{
-
-
   render () {
     if (this.props.courseObject != "empty"){
       var contentBoxesArr = [];
@@ -15,16 +16,16 @@ export default class MonthBoxContent extends React.Component{
           && content.getEndMonth() > this.props.getDateSelection().selectedMonth
           && content.getMeetDays()[this.props.dayOfWeek] == true){
 
-            contentBoxesArr.push(<ContentBoxes hour={content.getStartTimeInfo("hours")} shortName={content.getShortName()} time={content.getStartTimeInfo("string")}/>);
+            contentBoxesArr.push(<ContentBoxes hour={content.getStartTimeInfo("hours")} location={content.getBuilding()} longName={content.getTitle()} shortName={content.getShortName()} endTime={content.getEndTimeInfo("string")} startTime={content.getStartTimeInfo("string")}/>);
         }else if (content.getStartMonth() == this.props.getDateSelection().selectedMonth
           && content.getStartDay() <= this.props.dayNumber
           && content.getMeetDays()[this.props.dayOfWeek] == true){
-            contentBoxesArr.push(<ContentBoxes hour={content.getStartTimeInfo("hours")} shortName={content.getShortName()} time={content.getStartTimeInfo("string")}/>);
+            contentBoxesArr.push(<ContentBoxes hour={content.getStartTimeInfo("hours")} location={content.getBuilding()} longName={content.getTitle()} shortName={content.getShortName()} endTime={content.getEndTimeInfo("string")} startTime={content.getStartTimeInfo("string")}/>);
 
         }else if (content.getEndMonth() == this.props.getDateSelection().selectedMonth
           && content.getEndDay() >= this.props.dayNumber
           && content.getMeetDays()[this.props.dayOfWeek] == true){
-            contentBoxesArr.push(<ContentBoxes hour={content.getStartTimeInfo("hours")} shortName={content.getShortName()} time={content.getStartTimeInfo("string")}/>);
+            contentBoxesArr.push(<ContentBoxes hour={content.getStartTimeInfo("hours")} location={content.getBuilding()} longName={content.getTitle()} shortName={content.getShortName()} endTime={content.getEndTimeInfo("string")} startTime={content.getStartTimeInfo("string")}/>);
           }
       }
       try{
@@ -54,10 +55,32 @@ class ContentBoxes extends React.Component{
     console.log()
     return (
       <div className="monthBoxContent">
-        <button className="eventButton" >
-          {this.props.shortName}
-          <b>{this.props.time}</b>
-        </button>
+        <OverlayTrigger trigger="click" rootClose placement="bottom" overlay={<Popover  title={this.props.longName} ><PopoverContent time={this.props.startTime + " - " + this.props.endTime} location={this.props.location} /></Popover>}>
+          <button className="eventButton" >
+            {this.props.shortName}
+            <b>{this.props.startTime}</b>
+          </button>
+        </OverlayTrigger>
+      </div>
+    );
+  }
+}
+
+class PopoverContent extends React.Component{
+  render() {
+
+
+
+    return (
+      <div>
+        <div className="popoverTime">
+          <i class="material-icons" id="coursesPortlet-month-popover-time">access_time</i>
+          {this.props.time}
+        </div>
+        <div className="popoverTime">
+          <i id="coursesPortlet-month-popover-time" class="material-icons">map</i>
+          {this.props.location}
+        </div>
       </div>
     );
   }
