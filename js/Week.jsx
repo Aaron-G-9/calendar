@@ -40,14 +40,14 @@ class WeekFloater extends React.Component{
     return (
       <div className="weekFloater">
         <WeekHeader/>
-        <div className="abee">
-          <div className="abcdefg"></div>
-          <div className="abcdefg"></div>
-          <div className="abcdefg"></div>
-          <div className="abcdefg"></div>
-          <div className="abcdefg"></div>
-          <div className="abcdefg"></div>
-          <div className="abcdefg"></div>
+        <div className="allDayRow">
+          <div className="allDay"></div>
+          <div className="allDay"></div>
+          <div className="allDay"></div>
+          <div className="allDay"></div>
+          <div className="allDay"></div>
+          <div className="allDay"></div>
+          <div className="allDay"></div>
       </div>
     </div>
     );
