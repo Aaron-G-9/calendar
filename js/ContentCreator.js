@@ -124,4 +124,10 @@ export default class ContentCreator{
     var building = this.jsonObject.myCourses[this.classNumber].courseInformation[0].courseMeetings[0].buildingRoom;
     return building;
   }
+
+  getDesiredHeight(){
+    var startHour = getStartTimeInfo("hours");
+    var endHour = getEndTimeInfo("hours");
+    return
+  }
 }
