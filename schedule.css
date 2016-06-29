@@ -123,6 +123,7 @@
 }
 
 .hourBoxContent{
+  display: flex;
   flex: 1 auto;
   height: 1.1em;
   background-color: transparent;
@@ -131,6 +132,18 @@
   border-style: solid;
   border-top-color: lightgrey;
   border-top-style: dashed;
+}
+
+.filledHourBoxContent{
+  display: flex;
+  flex: 1 auto;
+  height: 1.1em;
+  background-color: transparent;
+  border-color: lightgrey;
+  border-width: thin;
+  border-style: solid;
+  border-bottom: none;
+  border-top: none;
 }
 
 .dayview{
@@ -223,6 +236,20 @@
   border-style: solid;
   border-color: lightgrey;
   border-width: thin;
+}
+
+.weekEventButton{
+  display: flex;
+  flex: 1;
+  opacity: .67;
+  text-align: left;
+  outline: 0;
+  border-style: none;
+  background-color: lightgreen;
+  color: darkgreen;
+  margin-left: .3em;
+  margin-right: .3em;
+
 }
 
 #coursesPortlet-month-popover-time{
