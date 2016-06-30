@@ -146,7 +146,7 @@ export default class ContentCreator{
     if (startMinutes >= .5 ){
       startMinutes = 1;
     }
-    return startHour + startMinutes;
+    return (startHour + startMinutes - 7) * 2;
 
 
   }
