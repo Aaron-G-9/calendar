@@ -14,10 +14,8 @@ export default class DayAndWeek extends React.Component{
 class DayContent extends React.Component{
   render() {
     var contentboxes = [];
-    var content = new ContentCreator(this.props.courseObject, 2);
-
     for (var i = 0; i < (prettyHours.length * 2); i++){
-      contentboxes.push(<HourContent dayOfWeek={this.props.dayOfWeek} meetDays={content.getMeetDays()} startTime={content.getWeekViewPosition()} shortName={content.getShortName()}  desiredHeight={content.getDesiredHeight()  + "rem"} hourBoxNumber={i} />);
+      contentboxes.push(<HourContent dayOfWeek={this.props.dayOfWeek} courseObject={this.props.courseObject} hourBoxNumber={i} />);
     }
     return (
       <div className="weekCol">
@@ -31,17 +29,22 @@ class DayContent extends React.Component{
 
 class HourContent extends React.Component{
   render() {
-    //console.log("start time: " + this.props.startTime);
-    var stylyy={
-      height: this.props.desiredHeight,
-    }
-    console.log(this.props.dayOfWeek + " " + this.props.meetDays);
-    if (this.props.hourBoxNumber == this.props.startTime && this.props.meetDays[this.props.dayOfWeek] == true ){
-      return(
-        <div className="filledHourBoxContent">
-          <button className="weekEventButton" style={stylyy}>{this.props.shortName}</button>
-        </div>
-      )
+    var testingArr = [];
+
+    for (var i = 0; i < this.props.courseObject.myCourses.length; i++){
+      var content = new ContentCreator(this.props.courseObject, i);
+
+      var stylyy={
+        height: content.getDesiredHeight()  + "rem",
+      }
+
+      if (this.props.hourBoxNumber == content.getWeekViewPosition() && content.getMeetDays()[this.props.dayOfWeek] == true ){
+        return(
+          <div className="filledHourBoxContent">
+            <button className="weekEventButton" style={stylyy}>{content.getShortName()}</button>
+          </div>
+        );
+      }
     }
     return (
       <div className="hourBoxContent">
