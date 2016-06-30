@@ -139,7 +139,15 @@ export default class ContentCreator{
     return ((hours + minutes) * 4.6);
   }
 
-  getClassLength(){
-    
+  getWeekViewPosition(){
+    var startHour = this.getStartTimeInfo("hours");
+    var startMinutes = (this.getStartTimeInfo("minutes")/60)
+
+    if (startMinutes >= .5 ){
+      startMinutes = 1;
+    }
+    return startHour + startMinutes;
+
+
   }
 }
