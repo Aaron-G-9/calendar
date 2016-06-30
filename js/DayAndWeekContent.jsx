@@ -45,7 +45,7 @@ class HourContent extends React.Component{
         console.log(content.getWeekViewPosition() + " " + this.props.hourBoxNumber);
         return(
           <div className="filledHourBoxContent">
-            <OverlayTrigger trigger="click" rootClose placement="bottom" overlay={<Popover  title={content.getShortName()} ><PopoverContent time={content.getStartTimeInfo("string") + " - " + content.getEndTimeInfo("string")}/></Popover>}>
+            <OverlayTrigger trigger="click" rootClose placement="bottom" overlay={<Popover  title={content.getShortName()} ><PopoverContent location={content.getBuilding()} time={content.getStartTimeInfo("string") + " - " + content.getEndTimeInfo("string")}/></Popover>}>
             <button className="weekEventButton" style={stylyy}>{content.getShortName()}</button>
             </OverlayTrigger>
           </div>
