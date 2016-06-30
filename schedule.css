@@ -241,7 +241,7 @@
 .weekEventButton{
   display: flex;
   flex: 1;
-  opacity: .67;
+  z-index: 1;
   text-align: left;
   outline: 0;
   border-style: none;
