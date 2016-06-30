@@ -9,7 +9,7 @@ export default class WeekView extends React.Component{
   render () {
     return (
       <div className="weekGrid">
-          <WeekFloater />
+          <WeekHeader />
         <div className="weekView">
           <DayAndWeekHours />
           <WeekContent courseObject={this.props.courseObject} />
@@ -29,27 +29,6 @@ class WeekContent extends React.Component{
       <div className="weekContent">
         {contentArray}
       </div>
-    );
-  }
-}
-
-class WeekFloater extends React.Component{
-  render() {
-
-
-    return (
-      <div className="weekFloater">
-        <WeekHeader/>
-        <div className="allDayRow">
-          <div className="allDay"></div>
-          <div className="allDay"></div>
-          <div className="allDay"></div>
-          <div className="allDay"></div>
-          <div className="allDay"></div>
-          <div className="allDay"></div>
-          <div className="allDay"></div>
-      </div>
-    </div>
     );
   }
 }
