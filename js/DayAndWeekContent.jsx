@@ -33,7 +33,7 @@ class DayContent extends React.Component{
 class HourContent extends React.Component{
   render() {
     var testingArr = [];
-
+    console.log(this.props.courseObject);
     for (var i = 0; i < this.props.courseObject.myCourses.length; i++){
       var content = new ContentCreator(this.props.courseObject, i);
 

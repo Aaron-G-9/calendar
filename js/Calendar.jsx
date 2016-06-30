@@ -70,14 +70,12 @@ export default class Calendar extends React.Component{
   }
 
   render() {
-
     //console.log(this.state.courseObject);
     if (this.state.desiredView == ("WeekView")){
       return (
-          <div className="content">
-            <TitleBar changeDesiredView={this.changeDesiredView.bind(this)} changeDateSelection={this.changeDateSelection.bind(this)} />
-
-              <WeekGrid courseObject={this.state.courseObject}/>
+        <div className="content">
+          <TitleBar changeDesiredView={this.changeDesiredView.bind(this)} changeDateSelection={this.changeDateSelection.bind(this)} />
+          <WeekGrid courseObject={this.state.courseObject}/>
 
           </div>
       );
@@ -85,7 +83,7 @@ export default class Calendar extends React.Component{
       return (
           <div className="content">
             <TitleBar changeDesiredView={this.changeDesiredView.bind(this)} changeDateSelection={this.changeDateSelection.bind(this)} />
-            <DayView changeDateSelection={this.changeDateSelection.bind(this)} />
+            <DayView changeDateSelection={this.changeDateSelection.bind(this)} courseObject={this.state.courseObject} />
           </div>
       );
     }else{

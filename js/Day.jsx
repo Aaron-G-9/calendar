@@ -10,7 +10,7 @@ export default class DayGrid extends React.Component{
     return (
       <div className="daygrid">
         <DayAndWeekHours />
-        <DayAndWeekContent />
+        <DayAndWeekContent courseObject={this.props.courseObject} />
       </div>
     );
   }

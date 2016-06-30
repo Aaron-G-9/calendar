@@ -147,7 +147,5 @@ export default class ContentCreator{
       startMinutes = 1;
     }
     return (startHour + startMinutes - 7) * 2;
-
-
   }
 }
