@@ -32,7 +32,7 @@ export default class MonthBoxContent extends React.Component{
         contentBoxesArr.sort(function(a, b){return a.props.hour - b.props.hour});
         console.log(contentBoxesArr[0].props.hour);
       } catch (e){
-        console.log("Woah. An error occured. I should do something about that.");
+        //console.log("Woah. An error occured. I should do something about that.");
       }
 
       return(

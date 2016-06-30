@@ -49,13 +49,13 @@ export default class Calendar extends React.Component{
   }
 
   changeDesiredView(desiredView){
-    console.log(desiredView);
-    console.log(this.state.selectedMonth);
+    //console.log(desiredView);
+    //console.log(this.state.selectedMonth);
     this.setState({desiredView});
   }
 
   changeDateSelection(month, year, day){
-    console.log(month + " " + year + " " + day);
+    //console.log(month + " " + year + " " + day);
     this.setState({
       selectedMonth: month,
       selectedDay: day,
@@ -71,7 +71,7 @@ export default class Calendar extends React.Component{
 
   render() {
 
-    console.log(this.state.courseObject);
+    //console.log(this.state.courseObject);
     if (this.state.desiredView == ("WeekView")){
       return (
           <div className="content">
