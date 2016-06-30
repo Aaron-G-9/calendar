@@ -41,6 +41,7 @@ export default class ContentCreator{
     var date = new Date(this.jsonObject.myCourses[this.classNumber].courseInformation[0].courseMeetings[0].startTime);
     var hours = date.getHours();
     var minutes = date.getMinutes();
+    hours = hours - 1;
     var stringMinutes;
     if (minutes == 0){
       stringMinutes = "";
@@ -69,6 +70,7 @@ export default class ContentCreator{
     var date = new Date(this.jsonObject.myCourses[this.classNumber].courseInformation[0].courseMeetings[0].endTime);
     var hours = date.getHours();
     var minutes = date.getMinutes();
+    hours = hours - 1;
     var stringMinutes;
     if (minutes == 0){
       stringMinutes = "";
@@ -126,8 +128,18 @@ export default class ContentCreator{
   }
 
   getDesiredHeight(){
-    var startHour = getStartTimeInfo("hours");
-    var endHour = getEndTimeInfo("hours");
-    return
+    var startHour = this.getStartTimeInfo("hours");
+    var startMinutes = this.getStartTimeInfo("minutes");
+    var endHour = this.getEndTimeInfo("hours");
+    var endMinutes = this.getEndTimeInfo("minutes");
+
+    var minutes = (endMinutes - startMinutes)/60;
+    var hours = endHour - startHour;
+    //console.log(startHour + ", " + endHour);
+    return ((hours + minutes) * 4.6);
+  }
+
+  getClassLength(){
+    
   }
 }

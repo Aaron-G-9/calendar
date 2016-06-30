@@ -12,7 +12,7 @@ export default class WeekView extends React.Component{
           <WeekFloater />
         <div className="weekView">
           <DayAndWeekHours />
-          <WeekContent coursesObject={this.props.coursesObject} />
+          <WeekContent courseObject={this.props.courseObject} />
         </div>
       </div>
     );
@@ -23,7 +23,7 @@ class WeekContent extends React.Component{
   render(){
     var contentArray = [];
     for (var i = 0; i < 7; i++){
-      contentArray.push(<DayAndWeekContent coursesObject={this.props.coursesObject}/>);
+      contentArray.push(<DayAndWeekContent courseObject={this.props.courseObject}/>);
     }
     return(
       <div className="weekContent">
