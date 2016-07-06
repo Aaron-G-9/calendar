@@ -23,7 +23,7 @@ export default class TitleBar extends React.Component{
           <button className="scheduleButtons">
             <i className="material-icons">today</i>
           </button>
-          <DatePaginator changeDateSelection={this.props.changeDateSelection} />
+          <DatePaginator selectedWeek={this.props.selectedWeek} currentView={this.props.currentView} changeDateSelection={this.props.changeDateSelection} />
           <ViewSelectorButtons changeDesiredView={this.props.changeDesiredView} />
       </div>
     );
@@ -88,7 +88,7 @@ class DatePaginator extends React.Component{
         <button className="scheduleButtons" onClick={this.backMonth.bind(this)}>
           <i className="material-icons">navigate_before</i>
         </button>
-        <DateRange month={monthNames[currentMonth]} year={currentYear}/>
+        <DateRange selectedWeek={this.props.selectedWeek} currentView={this.props.currentView} month={monthNames[currentMonth]} year={currentYear}/>
         <button className="scheduleButtons" id="scheduleForwardWeek" onClick={this.forwardMonth.bind(this)}>
           <i className="material-icons">navigate_next</i>
         </button>
@@ -99,11 +99,38 @@ class DatePaginator extends React.Component{
 
 
 class DateRange extends React.Component{
+  /*
+  getFirstDayofMonth(){
+    var days = new Date(this.props.getDateSelection().selectedYear, this.props.getDateSelection().selectedMonth, 1);
+    return days.getDay();
+  }
+  */
   render () {
-    return (
-      <div className="dateRange">
-          {this.props.month + " " + this.props.year }
-      </div>
-    );
+    console.log(this.props.currentView);
+    if (this.props.currentView == "MonthView"){
+      return (
+        <div className="dateRange">
+            {this.props.month + " " + this.props.year}
+        </div>
+      );
+    }else if (this.props.currentView == "WeekView"){
+      return (
+        <div className="dateRange">
+            {this.props.month + " " + this.props.selectedWeek + " - " }
+        </div>
+      );
+    }else if (this.props.currentView == "DayView"){
+      return (
+        <div>
+
+        </div>
+      );
+    }else{
+      return (
+        <div>ERROR</div>
+      );
+
+    }
+
   }
 }

@@ -73,7 +73,7 @@ class MonthDayBox extends React.Component{
           {(this.props.dayBoxNumber - this.getFirstDayofMonth() + 1)}
         </div>
       );
-    }else if ((this.props.dayBoxNumber - this.getFirstDayofMonth() + 1)> this.getDaysOfMonth()){
+    }else if ((this.props.dayBoxNumber - this.getFirstDayofMonth() + 1) > this.getDaysOfMonth()){
       return(
         <div className="greyedMonthDaybox">
         </div>

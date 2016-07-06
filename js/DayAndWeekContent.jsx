@@ -1,4 +1,4 @@
-import React, { PropTypes } from 'react'
+import React from 'react'
 import ContentCreator from "./ContentCreator.js"
 import OverlayTrigger from 'react-bootstrap/lib/OverlayTrigger';
 import Popover from 'react-bootstrap/lib/Popover';
@@ -37,7 +37,7 @@ class HourContent extends React.Component{
     for (var i = 0; i < this.props.courseObject.myCourses.length; i++){
       var content = new ContentCreator(this.props.courseObject, i);
 
-      var stylyy={
+      var lengthStyle={
         height: content.getDesiredHeight()  + "rem",
       }
 
@@ -45,8 +45,8 @@ class HourContent extends React.Component{
         console.log(content.getWeekViewPosition() + " " + this.props.hourBoxNumber);
         return(
           <div className="filledHourBoxContent">
-            <OverlayTrigger trigger="click" rootClose placement="bottom" overlay={<Popover  title={content.getShortName()} ><PopoverContent location={content.getBuilding()} time={content.getStartTimeInfo("string") + " - " + content.getEndTimeInfo("string")}/></Popover>}>
-            <button className="weekEventButton" style={stylyy}>{content.getShortName()}</button>
+            <OverlayTrigger trigger="click" rootClose placement="bottom" overlay={<Popover  title={content.getTitle()} ><PopoverContent location={content.getBuilding()} time={content.getStartTimeInfo("string") + " - " + content.getEndTimeInfo("string")}/></Popover>}>
+            <button className="weekEventButton" style={lengthStyle}>{content.getShortName()}</button>
             </OverlayTrigger>
           </div>
         );

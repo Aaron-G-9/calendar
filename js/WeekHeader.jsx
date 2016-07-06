@@ -1,6 +1,8 @@
 import React from "react";
 
 var sundayWeek = ["Sun", "Mon", "Tue", "Wed", "Thur", "Fri", "Sat"];
+var d = new Date();
+var today = d.getDate();
 
 export default class MonthDaysHeader extends React.Component{
   render() {

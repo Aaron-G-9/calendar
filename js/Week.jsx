@@ -23,7 +23,7 @@ class WeekContent extends React.Component{
   render(){
     var contentArray = [];
     for (var i = 0; i < 7; i++){
-      contentArray.push(<DayAndWeekContent dayOfWeek={i} courseObject={this.props.courseObject}/>);
+      contentArray.push(<DayAndWeekContent dayOfMonth={23} dayOfWeek={i} courseObject={this.props.courseObject}/>);
     }
     return(
       <div className="weekContent">

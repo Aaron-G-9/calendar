@@ -24,7 +24,6 @@ var currentDay = d.getDate();
 var currentMonthName = monthNames[currentMonth];
 
 
-
 export default class Calendar extends React.Component{
   constructor(){
     super();
@@ -34,6 +33,7 @@ export default class Calendar extends React.Component{
       selectedYear: currentYear,
       selectedDay: currentDay,
       courseObject: "empty",
+      selectedWeek: 1,
     }
   }
 
@@ -74,15 +74,15 @@ export default class Calendar extends React.Component{
     if (this.state.desiredView == ("WeekView")){
       return (
         <div className="content">
-          <TitleBar changeDesiredView={this.changeDesiredView.bind(this)} changeDateSelection={this.changeDateSelection.bind(this)} />
-          <WeekGrid courseObject={this.state.courseObject}/>
+          <TitleBar selectedWeek={this.state.selectedWeek} currentView={this.state.desiredView} changeDesiredView={this.changeDesiredView.bind(this)} changeDateSelection={this.changeDateSelection.bind(this)} />
+          <WeekGrid getDateSelection={this.getDateSelection.bind(this)} courseObject={this.state.courseObject}/>
 
           </div>
       );
     }else if (this.state.desiredView == ("DayView")){
       return (
           <div className="content">
-            <TitleBar changeDesiredView={this.changeDesiredView.bind(this)} changeDateSelection={this.changeDateSelection.bind(this)} />
+            <TitleBar selectedDay={this.state.selectedDay} currentView={this.state.desiredView} changeDesiredView={this.changeDesiredView.bind(this)} changeDateSelection={this.changeDateSelection.bind(this)} />
             <DayView changeDateSelection={this.changeDateSelection.bind(this)} courseObject={this.state.courseObject} />
           </div>
       );
@@ -90,7 +90,7 @@ export default class Calendar extends React.Component{
       //Return MonthView
       return (
           <div className="content">
-            <TitleBar changeDesiredView={this.changeDesiredView.bind(this)} changeDateSelection={this.changeDateSelection.bind(this)} />
+            <TitleBar selectedDay={this.state.selectedDay} currentView={this.state.desiredView} changeDesiredView={this.changeDesiredView.bind(this)} changeDateSelection={this.changeDateSelection.bind(this)} />
             <MonthView getDateSelection={this.getDateSelection.bind(this)} changeDateSelection={this.changeDateSelection.bind(this)}  courseObject={this.state.courseObject}/>
           </div>
       );
@@ -113,7 +113,7 @@ class DayView extends React.Component{
   render() {
     return (
       <div>
-        <DayGrid />
+        <DayGrid courseObject={this.props.courseObject}/>
       </div>
     );
   }
