@@ -113,13 +113,12 @@
 }
 
 .hourBox{
+  display: flex;
+  justify-content: center;
   width: 5em;
   height: 3.3em;
   color: grey;
   background-color: transparent;
-  border-color: grey;
-  border-width: thin;
-  border-style: solid;
 }
 
 .hourBoxContent{
@@ -149,6 +148,7 @@
 .dayview{
   display: flex;
   flex-direction: column;
+  margin-bottom: 1.2rem;
 }
 
 .daygrid{
@@ -174,6 +174,7 @@
   display: flex;
   flex-direction: row;
   flex: 1;
+  margin-top: 1.2rem;
 }
 
 .monthBoxContent{
