@@ -6,19 +6,11 @@ import Popover from 'react-bootstrap/lib/Popover';
 const prettyHours = ["7am", "8am", "9am", "10am", "11am", "12am", "1pm",
     "2pm", "3pm", "4pm", "5pm", "6pm", "7pm", "8pm", "9pm", "10pm", "11pm"];
 
-export default class DayAndWeek extends React.Component{
-  render() {
-    return (
-        <DayContent dayOfWeek={this.props.dayOfWeek} courseObject={this.props.courseObject} />
-    );
-  }
-}
-
-class DayContent extends React.Component{
+export default class WeekColumn extends React.Component{
   render() {
     var contentboxes = [];
     for (var i = 0; i < (prettyHours.length * 2); i++){
-      contentboxes.push(<HourContent dayOfWeek={this.props.dayOfWeek} courseObject={this.props.courseObject} hourBoxNumber={i} />);
+      contentboxes.push(<HourBox getDateSelection={this.props.getDateSelection} dayOfWeek={this.props.dayOfWeek} courseObject={this.props.courseObject} hourBoxNumber={i} />);
     }
     return (
       <div className="weekCol">
@@ -28,12 +20,39 @@ class DayContent extends React.Component{
   }
 }
 
+class HourBox extends React.Component{
 
+  getFirstDayofMonth(){
+    var days = new Date(this.props.getDateSelection().selectedYear, this.props.getDateSelection().selectedMonth, 1);
+    return days.getDay();
+  }
+
+  render() {
+    if (this.getFirstDayofMonth() <= this.props.dayOfWeek){
+      return (
+        <div className="hourBox">
+          <HourContent getDateSelection={this.props.getDateSelection} dayOfWeek={this.props.dayOfWeek} courseObject={this.props.courseObject} hourBoxNumber={this.props.hourBoxNumber}/>
+        </div>
+      );
+    }else{
+      return(
+        <div className="greyedHourBox">
+          
+        </div>
+      )
+    }
+
+
+  }
+}
 
 class HourContent extends React.Component{
+
+
+
   render() {
     var testingArr = [];
-    console.log(this.props.courseObject);
+    //console.log(this.props.courseObject);
     for (var i = 0; i < this.props.courseObject.myCourses.length; i++){
       var content = new ContentCreator(this.props.courseObject, i);
 
@@ -41,7 +60,10 @@ class HourContent extends React.Component{
         height: content.getDesiredHeight()  + "rem",
       }
 
-      if (this.props.hourBoxNumber == content.getWeekViewPosition() && content.getMeetDays()[this.props.dayOfWeek] == true ){
+      if (content.getStartMonth() < this.props.getDateSelection().selectedMonth
+          && content.getEndMonth() > this.props.getDateSelection().selectedMonth
+          && this.props.hourBoxNumber == content.getWeekViewPosition()
+          && content.getMeetDays()[this.props.dayOfWeek] == true ){
         console.log(content.getWeekViewPosition() + " " + this.props.hourBoxNumber);
         return(
           <div className="filledHourBoxContent">
@@ -53,8 +75,7 @@ class HourContent extends React.Component{
       }
     }
     return (
-      <div className="hourBoxContent">
-
+      <div>
       </div>
     );
   }

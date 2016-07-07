@@ -16,8 +16,8 @@ class DayHours extends React.Component{
   render() {
     var timeboxes = [];
     for (var i = 0; i < prettyHours.length; i++){
-      timeboxes.push(<HourBox title={prettyHours[i]} />);
-      timeboxes[i] = (<HourBox title={prettyHours[i]} />);
+      timeboxes.push(<HourGuideBox title={prettyHours[i]} />);
+      timeboxes[i] = (<HourGuideBox Box title={prettyHours[i]} />);
     }
     return (
       <div className="dayview">
@@ -28,10 +28,10 @@ class DayHours extends React.Component{
 }
 
 
-class HourBox extends React.Component{
+class HourGuideBox extends React.Component{
   render() {
     return (
-      <div className="hourBox">
+      <div className="hourGuideBox">
         {this.props.title}
       </div>
     );
