@@ -91,7 +91,7 @@ export default class Calendar extends React.Component{
       return (
           <div className="content">
             <TitleBar selectedDay={this.state.selectedDay} currentView={this.state.desiredView} changeDesiredView={this.changeDesiredView.bind(this)} changeDateSelection={this.changeDateSelection.bind(this)} />
-            <MonthView getDateSelection={this.getDateSelection.bind(this)} changeDateSelection={this.changeDateSelection.bind(this)}  courseObject={this.state.courseObject}/>
+            <MonthView getDateSelection={this.getDateSelection.bind(this)} courseObject={this.state.courseObject}/>
           </div>
       );
     }
