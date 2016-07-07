@@ -9,7 +9,7 @@
 ### Screenshots
 
 ###### MonthView
-![MonthView Screenshot](/home/aaron/Pictures/monthview.png)
+![MonthView Screenshot](screenshots/monthview.png?raw=true)
 
 ###### WeekView
-![WeekView Screenshot](/home/aaron/Pictures/Screenshot from 2016-07-07 09-48-17.png)
+![WeekView Screenshot](screenshots/Screenshot from 2016-07-07 09-48-17.png?raw=true)
