@@ -112,7 +112,7 @@
   flex: 1;
 }
 
-.hourBox{
+.hourGuideBox{
   display: flex;
   justify-content: center;
   width: 5em;
@@ -121,7 +121,7 @@
   background-color: transparent;
 }
 
-.hourBoxContent{
+.hourBox{
   display: flex;
   flex: 1 auto;
   height: 1.1em;
@@ -131,6 +131,16 @@
   border-style: solid;
   border-top-color: lightgrey;
   border-top-style: dashed;
+}
+
+.greyedHourBox{
+  display: flex;
+  flex: 1 auto;
+  height: 1.1em;
+  background-color: lightgrey;
+  border-color: grey;
+  border-style: dotted;
+  border-width: thin;
 }
 
 .filledHourBoxContent{
