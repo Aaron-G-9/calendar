@@ -1,8 +1,6 @@
 import React from "react";
+import DateHelper from './DateHelper.js';
 
-const monthNames = ["January", "February", "March", "April", "May", "June",
-"July", "August", "September", "October", "November", "December"
-];
 
 const prettyHours = ["All Day", "7am", "8am", "9am", "10am", "11am", "12am", "1pm",
     "2pm", "3pm", "4pm", "5pm", "6pm", "7pm", "8pm", "9pm", "10pm", "11pm"];
@@ -67,16 +65,18 @@ class DatePaginator extends React.Component{
         currentYear +=1;
       }
     }else if (this.props.currentView == "WeekView"){
-      var d = new Date();
-      if (d.getWeekOfMonth < this.props.selectedWeek){
+      var day = new Date(this.props.getDateSelection().selectedMonth, this.props.getDateSelection().selectedYear, 1);
+      console.log(this.props.getDateSelection().selectedWeek);
+      console.log(DateHelper.getWeekArray(this.props.getDateSelection().selectedYear, this.props.getDateSelection().selectedMonth, this.props.getDateSelection().selectedWeek));
+      if (this.props.getDateSelection().selectedWeek == DateHelper.getWeeksOfMonth(day)){
+        console.log("we are on the last week");
+      }else{
+        console.log(this.props.getDateSelection().selectedWeek + 1);
+        this.props.changeDateSelection(currentMonth, currentYear, currentDay, (this.props.getDateSelection().selectedWeek + 1));
+        console.log(this.props.getDateSelection());
+      }
 
 
-
-
-            var weeksInCurrentMonth = new Date(2016,12,1).getWeekOfMonth();
-            var weeksInDecember2012 = new Date(2012,12,1).getWeekOfMonth(); // 6
-            alert(weeksInCurrentMonth);
-        }
 
     }else{
       alert("I don't know what to do...");
@@ -103,7 +103,7 @@ class DatePaginator extends React.Component{
         <button className="scheduleButtons" onClick={this.backMonth.bind(this)}>
           <i className="material-icons">navigate_before</i>
         </button>
-        <DateRange getDateSelection={this.props.getDateSelection} selectedWeek={this.props.selectedWeek} currentView={this.props.currentView} month={monthNames[this.props.getDateSelection().selectedMonth]} year={this.props.getDateSelection().selectedYear}/>
+        <DateRange getDateSelection={this.props.getDateSelection} selectedWeek={this.props.selectedWeek} currentView={this.props.currentView} month={DateHelper.getMonthNames()[this.props.getDateSelection().selectedMonth]} year={this.props.getDateSelection().selectedYear}/>
         <button className="scheduleButtons" id="scheduleForwardWeek" onClick={this.forwardMonth.bind(this)}>
           <i className="material-icons">navigate_next</i>
         </button>

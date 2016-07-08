@@ -64,6 +64,16 @@ export default class Calendar extends React.Component{
     });
   }
 
+  changeDateSelection(month, year, day, week){
+    console.log(day);
+    this.setState({
+      selectedMonth: month,
+      selectedDay: day,
+      selectedYear: year,
+      selectedWeek: week,
+    })
+  }
+
   getDateSelection(){
     return(
       this.state
@@ -71,7 +81,6 @@ export default class Calendar extends React.Component{
   }
 
   render() {
-    console.log(DateHelper.getWeekArray(6, 2016, 6));
     //console.log(this.state.courseObject);
     if (this.state.desiredView == ("WeekView")){
       return (

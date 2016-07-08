@@ -1,10 +1,9 @@
 export default class DateHelper{
-  static getWeeksOfMonth(day){
 
+  static getWeeksOfMonth(day){
     var firstDay = new Date(day.setDate(1)).getDay();
     var totalDays = new Date(day.getFullYear(), day.getMonth() + 1, 0).getDate();
     return Math.ceil((firstDay + totalDays) / 7);
-
   }
 
   static getWeekArray(month, year, weekNumber){
@@ -57,4 +56,12 @@ export default class DateHelper{
     }
 
   }
+
+  static getMonthNames(){
+    const monthNames = ["January", "February", "March", "April", "May", "June",
+    "July", "August", "September", "October", "November", "December"
+    ];
+    return monthNames;
+  }
+
 }

@@ -1,7 +1,7 @@
 import React from "react";
 import MonthBoxContent from  "./MonthBoxContent.jsx";
 import MonthDaysHeader from "./MonthDaysHeader.jsx";
-
+import DateHelper from './DateHelper.js';
 var d = new Date();
 const monthNames = ["January", "February", "March", "April", "May", "June",
 "July", "August", "September", "October", "November", "December"
@@ -17,7 +17,8 @@ export default class MonthGrid extends React.Component{
     var monthRowArray = [];
     var days = new Date();
     console.log("Hello " + days);
-    for (var i  = 0; i < 6; i++){
+
+    for (var i  = 0; i < (DateHelper.getWeeksOfMonth(days) % 7); i++){
       monthRowArray.push(<MonthRow key={i} monthRowNumber={i} getDateSelection={this.props.getDateSelection} courseObject={this.props.courseObject}/>);
     }
     return (
