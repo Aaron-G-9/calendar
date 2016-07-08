@@ -35,10 +35,11 @@ export default class DateHelper{
       return weekArray;
     }else if (weekNumber == weeksOfMonth){
       var endWeekStart = (
-        (7 * weeksOfMonth - 2) + (7 - startDay) + 1
+        (7 * (weeksOfMonth - 2)) + (7 - startDay) + 1
       );
+      console.log("daysInMonth : " + daysInMonth);
       for (var i = 0; i < 7; i++){
-        if (endWeekStart < daysInMonth){
+        if (endWeekStart <= daysInMonth){
           weekArray[i] = endWeekStart;
         }else{
           weekArray[i] = 0;
@@ -47,7 +48,12 @@ export default class DateHelper{
       }
       return weekArray;
     }else {
-      return [2, 2, 2, 2, 2];
+      var weekStart = (((7 * (weekNumber -1)) - startDay) + 1);
+      for (var i = 0; i < 7; i++){
+        weekArray[i] = weekStart;
+        weekStart++;
+      }
+      return weekArray;
     }
 
   }
