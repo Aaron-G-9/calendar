@@ -3,6 +3,7 @@ import MonthGrid from "./Month.jsx"
 import DayGrid from "./Day.jsx"
 import TitleBar from "./TitleBar.jsx"
 import WeekGrid from "./Week.jsx"
+import DateHelper from './DateHelper.js';
 //Variables will go here:
 //Variables will go here:
 
@@ -70,11 +71,12 @@ export default class Calendar extends React.Component{
   }
 
   render() {
+    console.log(DateHelper.getWeekArray(6, 2016, 6));
     //console.log(this.state.courseObject);
     if (this.state.desiredView == ("WeekView")){
       return (
         <div className="content">
-          <TitleBar selectedWeek={this.state.selectedWeek} currentView={this.state.desiredView} changeDesiredView={this.changeDesiredView.bind(this)} changeDateSelection={this.changeDateSelection.bind(this)} />
+          <TitleBar getDateSelection={this.getDateSelection.bind(this)} selectedWeek={this.state.selectedWeek} currentView={this.state.desiredView} changeDesiredView={this.changeDesiredView.bind(this)} changeDateSelection={this.changeDateSelection.bind(this)} />
           <WeekGrid getDateSelection={this.getDateSelection.bind(this)} courseObject={this.state.courseObject}/>
 
           </div>
@@ -82,7 +84,7 @@ export default class Calendar extends React.Component{
     }else if (this.state.desiredView == ("DayView")){
       return (
           <div className="content">
-            <TitleBar selectedDay={this.state.selectedDay} currentView={this.state.desiredView} changeDesiredView={this.changeDesiredView.bind(this)} changeDateSelection={this.changeDateSelection.bind(this)} />
+            <TitleBar getDateSelection={this.getDateSelection.bind(this)} selectedDay={this.state.selectedDay} currentView={this.state.desiredView} changeDesiredView={this.changeDesiredView.bind(this)} changeDateSelection={this.changeDateSelection.bind(this)} />
             <DayView changeDateSelection={this.changeDateSelection.bind(this)} courseObject={this.state.courseObject} />
           </div>
       );
@@ -90,7 +92,7 @@ export default class Calendar extends React.Component{
       //Return MonthView
       return (
           <div className="content">
-            <TitleBar selectedDay={this.state.selectedDay} currentView={this.state.desiredView} changeDesiredView={this.changeDesiredView.bind(this)} changeDateSelection={this.changeDateSelection.bind(this)} />
+            <TitleBar getDateSelection={this.getDateSelection.bind(this)} selectedDay={this.state.selectedDay} currentView={this.state.desiredView} changeDesiredView={this.changeDesiredView.bind(this)} changeDateSelection={this.changeDateSelection.bind(this)} />
             <MonthView getDateSelection={this.getDateSelection.bind(this)} courseObject={this.state.courseObject}/>
           </div>
       );
