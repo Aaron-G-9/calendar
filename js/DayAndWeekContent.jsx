@@ -67,10 +67,14 @@ class HourContent extends React.Component{
         height: content.getDesiredHeight()  + "rem",
       }
 
+      var day = new Date(currentMonth, currentWeek, currentDay);
+
+      console.log(day.getDay());
+
       if (content.getStartMonth() <= this.props.getDateSelection().selectedMonth
           && content.getEndMonth() >= this.props.getDateSelection().selectedMonth
           && this.props.hourBoxNumber == content.getWeekViewPosition()
-          && content.getMeetDays()[this.props.dayOfWeek] == true ){
+          && content.getMeetDays()[day.getDay()] == true ){
         console.log(content.getWeekViewPosition() + " " + this.props.hourBoxNumber);
         return(
           <div className="filledHourBoxContent">
