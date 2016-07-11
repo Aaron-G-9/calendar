@@ -50,6 +50,32 @@ export default class DateHelper{
 
   }
 
+  static getWeekDateRange(month, year, weekNumber){
+    var day = new Date(year, month, 1);
+    var weeksOfMonth = this.getWeeksOfMonth(day);
+    var startDay = day.getDay();
+    var daysInMonth = new Date(year, month + 1, 0);
+    daysInMonth = daysInMonth.getDate();
+    var weekArray = [];
+    var firstNum, endNum;
+
+
+    if (weekNumber == 1){
+      firstNum = 1;
+      endNum = 7 - startDay;
+    }else if (weekNumber == weeksOfMonth){
+      firstNum = (
+        (7 * (weeksOfMonth - 2)) + (7 - startDay) + 1
+      );
+      endNum = daysInMonth;
+    }else{
+      firstNum = (((7 * (weekNumber -1)) - startDay) + 1);
+      endNum = firstNum + 6;
+    }
+
+    return(firstNum + " - " +  endNum);
+  }
+
   static getMonthNames(){
     const monthNames = ["January", "February", "March", "April", "May", "June",
     "July", "August", "September", "October", "November", "December"
