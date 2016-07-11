@@ -37,7 +37,7 @@ class HourBox extends React.Component{
     }else{
       return(
         <div className="greyedHourBox">
-          
+
         </div>
       )
     }
@@ -47,9 +47,6 @@ class HourBox extends React.Component{
 }
 
 class HourContent extends React.Component{
-
-
-
   render() {
     var testingArr = [];
     //console.log(this.props.courseObject);

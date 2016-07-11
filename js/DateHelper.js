@@ -13,14 +13,7 @@ export default class DateHelper{
     var daysInMonth = new Date(year, month + 1, 0);
     daysInMonth = daysInMonth.getDate();
     var weekArray = [];
-/*
-    console.log(
-      "Day : " + day +
-      " weeksOfMonth : " + weeksOfMonth +
-      " startDay : " + startDay +
-      " daysInMonth : " + daysInMonth
-    );
-*/
+
     if (weekNumber == 1){
       var dayNumber = 1;
       for (var i = 0; i < 7; i++){

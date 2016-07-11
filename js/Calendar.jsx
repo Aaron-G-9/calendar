@@ -52,23 +52,24 @@ export default class Calendar extends React.Component{
     this.setState({desiredView});
   }
 
-  changeDateSelection(month, year, day){
-    //console.log(month + " " + year + " " + day);
-    this.setState({
-      selectedMonth: month,
-      selectedDay: day,
-      selectedYear: year,
-    });
-  }
-
   changeDateSelection(month, year, day, week){
-    console.log(day);
-    this.setState({
-      selectedMonth: month,
-      selectedDay: day,
-      selectedYear: year,
-      selectedWeek: week,
-    })
+    console.log("setting week to: " + week);
+    if (week == null){
+      this.setState({
+        selectedMonth: month,
+        selectedDay: day,
+        selectedYear: year,
+      })
+    }else{
+      this.setState({
+        selectedMonth: month,
+        selectedDay: day,
+        selectedYear: year,
+        selectedWeek: week,
+      })
+    }
+
+
   }
 
   getDateSelection(){

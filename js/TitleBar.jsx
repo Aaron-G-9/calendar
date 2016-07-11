@@ -1,20 +1,19 @@
 import React from "react";
 import DateHelper from './DateHelper.js';
 
-
-
 var sundayWeek = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
 
 var currentMonth;
 var currentYear;
 var currentDay;
-
+var currentWeek;
 
 export default class TitleBar extends React.Component{
   render(){
     currentMonth = this.props.getDateSelection().selectedMonth;
     currentYear = this.props.getDateSelection().selectedYear;
     currentDay = this.props.getDateSelection().selectedDay;
+    currentWeek = this.props.getDateSelection().selectedWeek;
     return (
       <div className="titleBar">
           <button className="scheduleButtons">
@@ -63,15 +62,18 @@ class DatePaginator extends React.Component{
         currentYear +=1;
       }
     }else if (this.props.currentView == "WeekView"){
-      var day = new Date(this.props.getDateSelection().selectedMonth, this.props.getDateSelection().selectedYear, 1);
-      console.log(this.props.getDateSelection().selectedWeek);
-      console.log(DateHelper.getWeekArray(this.props.getDateSelection().selectedYear, this.props.getDateSelection().selectedMonth, this.props.getDateSelection().selectedWeek));
-      if (this.props.getDateSelection().selectedWeek == DateHelper.getWeeksOfMonth(day)){
-        console.log("we are on the last week");
+      var day = new Date(currentMonth, currentYear, 1);
+      if (currentWeek == DateHelper.getWeeksOfMonth(day)){ //We are on the last week
+        console.log("entering this one");
+        if (currentMonth < 11){
+          currentMonth += 1;
+        }else{
+          currentMonth = 0;
+          currentYear +=1;
+        }
+        currentWeek = 1;
       }else{
-        console.log(this.props.getDateSelection().selectedWeek + 1);
-        this.props.changeDateSelection(currentMonth, currentYear, currentDay, (this.props.getDateSelection().selectedWeek + 1));
-        console.log(this.props.getDateSelection());
+        currentWeek++;
       }
 
 
@@ -81,7 +83,7 @@ class DatePaginator extends React.Component{
     }
 
 
-    this.props.changeDateSelection(currentMonth, currentYear, currentDay );
+    this.props.changeDateSelection(currentMonth, currentYear, currentDay, currentWeek );
   }
 
   backMonth(){
@@ -119,7 +121,7 @@ class DateRange extends React.Component{
   }
   */
   render () {
-    console.log(this.props.currentView);
+
     if (this.props.currentView == "MonthView"){
       return (
         <div className="dateRange">

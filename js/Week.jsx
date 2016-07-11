@@ -7,6 +7,7 @@ import WeekHeader from "./WeekHeader.jsx";
 
 export default class WeekView extends React.Component{
   render () {
+    
     return (
       <div className="weekGrid">
           <WeekHeader />
