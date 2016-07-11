@@ -75,9 +75,6 @@ class DatePaginator extends React.Component{
       }else{
         currentWeek++;
       }
-
-
-
     }else{
       alert("I don't know what to do...");
     }
@@ -87,14 +84,33 @@ class DatePaginator extends React.Component{
   }
 
   backMonth(){
-    if (currentMonth < 1){
-      currentMonth = 11;
-      currentYear -= 1;
+    if(this.props.currentView == "MonthView"){
+      if (currentMonth < 1){
+        currentMonth = 11;
+        currentYear -= 1;
+      }else{
+        currentMonth -= 1;
+      }
+    }else if (this.props.currentView == "WeekView"){
+      if (currentWeek == 1){ //We are on the first week
+        if (currentMonth < 1){
+          currentMonth = 11;
+          currentYear -= 1;
+        }else{
+          currentMonth--;
+        }
+        var day = new Date(currentMonth, currentYear, 1);
+        currentWeek = DateHelper.getWeeksOfMonth(day);
+      }else{
+        currentWeek--;
+      }
     }else{
-      currentMonth -= 1;
+      alert("I don't know what to do...");
     }
-    this.props.changeDateSelection(currentMonth, currentYear, currentDay);
-    }
+    this.props.changeDateSelection(currentMonth, currentYear, currentDay, currentWeek );
+  }
+
+
 
 
   render() {
@@ -131,7 +147,7 @@ class DateRange extends React.Component{
     }else if (this.props.currentView == "WeekView"){
       return (
         <div className="dateRange">
-            {this.props.month + " " + this.props.selectedWeek + " - " }
+            {this.props.month + " " + DateHelper.getWeekDateRange(currentMonth, currentYear, currentWeek) }
         </div>
       );
     }else if (this.props.currentView == "DayView"){
