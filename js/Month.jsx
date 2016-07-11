@@ -15,8 +15,8 @@ const prettyHours = ["All Day", "7am", "8am", "9am", "10am", "11am", "12am", "1p
 export default class MonthGrid extends React.Component{
   render() {
     var monthRowArray = [];
-    var days = new Date();
-    console.log("Hello " + days);
+    var days = new Date(this.props.getDateSelection().selectedYear, this.props.getDateSelection().selectedMonth, 1);
+
 
     for (var i  = 0; i < (DateHelper.getWeeksOfMonth(days) % 7); i++){
       monthRowArray.push(<MonthRow key={i} monthRowNumber={i} getDateSelection={this.props.getDateSelection} courseObject={this.props.courseObject}/>);
