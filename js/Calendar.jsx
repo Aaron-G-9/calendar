@@ -13,9 +13,6 @@ const monthNames = ["January", "February", "March", "April", "May", "June",
 "July", "August", "September", "October", "November", "December"
 ];
 
-const prettyHours = ["All Day", "7am", "8am", "9am", "10am", "11am", "12am", "1pm",
-    "2pm", "3pm", "4pm", "5pm", "6pm", "7pm", "8pm", "9pm", "10pm", "11pm"];
-
 var sundayWeek = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
 
 var d = new Date();
