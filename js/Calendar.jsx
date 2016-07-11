@@ -91,7 +91,7 @@ export default class Calendar extends React.Component{
       return (
           <div className="content">
             <TitleBar getDateSelection={this.getDateSelection.bind(this)} selectedDay={this.state.selectedDay} currentView={this.state.desiredView} changeDesiredView={this.changeDesiredView.bind(this)} changeDateSelection={this.changeDateSelection.bind(this)} />
-            <DayView changeDateSelection={this.changeDateSelection.bind(this)} courseObject={this.state.courseObject} />
+            <DayView getDateSelection={this.getDateSelection.bind(this)} changeDateSelection={this.changeDateSelection.bind(this)} courseObject={this.state.courseObject} />
           </div>
       );
     }else{
@@ -121,7 +121,7 @@ class DayView extends React.Component{
   render() {
     return (
       <div>
-        <DayGrid courseObject={this.props.courseObject}/>
+        <DayGrid getDateSelection={this.props.getDateSelection} courseObject={this.props.courseObject}/>
       </div>
     );
   }

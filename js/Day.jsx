@@ -7,10 +7,11 @@ var d = new Date();
 
 export default class DayGrid extends React.Component{
   render() {
+    console.log(this.props.getDateSelection());
     return (
       <div className="daygrid">
         <DayAndWeekHours />
-        <DayAndWeekContent courseObject={this.props.courseObject} />
+        <DayAndWeekContent getDateSelection={this.props.getDateSelection} courseObject={this.props.courseObject} />
       </div>
     );
   }
