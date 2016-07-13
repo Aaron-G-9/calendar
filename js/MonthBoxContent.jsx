@@ -8,7 +8,7 @@ export default class MonthBoxContent extends React.Component{
     if (this.props.courseObject != "empty"){
       var contentBoxesArr = [];
 
-      //console.log(this.props.courseObject.myCourses.length);
+      ////console.log(this.props.courseObject.myCourses.length);
       for (var i = 0; i < this.props.courseObject.myCourses.length; i++){
         var content = new ContentCreator(this.props.courseObject, i);
         //If it is the months in between the start and end months of the class
@@ -30,7 +30,7 @@ export default class MonthBoxContent extends React.Component{
       }
       try{
         contentBoxesArr.sort(function(a, b){return a.props.hour - b.props.hour});
-        console.log(contentBoxesArr[0].props.hour);
+        //console.log(contentBoxesArr[0].props.hour);
       } catch (e){
         
       }
@@ -52,7 +52,7 @@ export default class MonthBoxContent extends React.Component{
 
 class ContentBoxes extends React.Component{
   render() {
-    console.log()
+    //console.log()
     return (
       <div className="monthBoxContent">
         <OverlayTrigger trigger="click" rootClose placement="bottom" overlay={<Popover  title={this.props.longName} ><PopoverContent time={this.props.startTime + " - " + this.props.endTime} location={this.props.location} /></Popover>}>
