@@ -23,7 +23,7 @@ export default class TitleBar extends React.Component{
           <button className="scheduleButtons">
             <i className="material-icons">today</i>
           </button>
-          <a href={"data:text/plain;charset=UTF-8," + creator.startICalFile()} download="Hello.txt">Download iCal!</a>
+          <a href={"data:text/plain;charset=UTF-8," + creator.makeFile()} download="mycourses.ics">Download iCal!</a>
           <DatePaginator getDateSelection={this.props.getDateSelection} selectedWeek={this.props.selectedWeek} currentView={this.props.currentView} changeDateSelection={this.props.changeDateSelection} />
           <ViewSelectorButtons changeDesiredView={this.props.changeDesiredView} />
       </div>

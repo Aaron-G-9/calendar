@@ -69,13 +69,13 @@ class HourContent extends React.Component{
 
       var day = new Date(currentMonth, currentWeek, currentDay);
 
-      console.log(day.getDay());
+      //console.log(day.getDay());
 
       if (content.getStartMonth() <= this.props.getDateSelection().selectedMonth
           && content.getEndMonth() >= this.props.getDateSelection().selectedMonth
           && this.props.hourBoxNumber == content.getWeekViewPosition()
           && content.getMeetDays()[day.getDay()] == true ){
-        console.log(content.getWeekViewPosition() + " " + this.props.hourBoxNumber);
+        //console.log(content.getWeekViewPosition() + " " + this.props.hourBoxNumber);
         return(
           <div className="filledHourBoxContent">
             <OverlayTrigger trigger="click" rootClose placement="bottom" overlay={<Popover  title={content.getTitle()} ><PopoverContent location={content.getBuilding()} time={content.getStartTimeInfo("string") + " - " + content.getEndTimeInfo("string")}/></Popover>}>
