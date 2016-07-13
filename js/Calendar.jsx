@@ -4,7 +4,6 @@ import DayGrid from "./Day.jsx"
 import TitleBar from "./TitleBar.jsx"
 import WeekGrid from "./Week.jsx"
 import DateHelper from './DateHelper.js';
-import ICalCreator from './ICalCreator.js'
 //Variables will go here:
 //Variables will go here:
 
@@ -112,8 +111,6 @@ export default class Calendar extends React.Component{
 class MonthView extends React.Component{
 
   render(){
-    var thing = new ICalCreator(this.props.courseObject);
-    //console.log(thing.addClass(1));
     return(
     <div className="mainContent">
       <MonthGrid getDateSelection={this.props.getDateSelection} courseObject={this.props.courseObject}/>
