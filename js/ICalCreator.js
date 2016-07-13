@@ -15,20 +15,20 @@ export default class ICalCreator{
 
   startICalFile(){
     return(
-      "BEGIN:VCALENDAR\n" +
+      "BEGIN:VCALENDAR%0A" +
       'PRODID:-//Oakland University//Courses Calendar//EN' +
-      "\nVERSION:2.0" +
-      "\nCALSCALE:GREGORIAN" +
-      "\nMETHOD:PUBLISH"
+      "%0AVERSION:2.0" +
+      "%0ACALSCALE:GREGORIAN" +
+      "%0AMETHOD:PUBLISH"
     );
   }
 
 
   addClass(classNumber){
     if (this.courseObject != "empty"){
+      //console.log(this.courseObject);
       var content = new ContentCreator(this.courseObject, classNumber);
-
-      return{
+      var event={
         DTSTART: content.getICalStartEnd().dtstart,
         DTEND: content.getICalStartEnd().dtend,
         LOCATION: content.getBuilding(),
@@ -36,8 +36,9 @@ export default class ICalCreator{
         DTSTAMP: ICalCreator.createDateStamp(),
         RRULE: "FREQ=WEEKLY;" + "UNTIL=" + content.getICalUntil() +";BYDAY=" + content.getICalMeetDays(),
       }
+      //console.log(JSON.parse(event));
     }else{
-      console.log("undefined");
+      //console.log("asdfghjkl");
     }
   }
 
@@ -61,7 +62,9 @@ export default class ICalCreator{
   }
 
 
+  replacer(){
 
+  }
 
 
 
