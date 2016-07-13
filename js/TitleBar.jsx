@@ -1,5 +1,6 @@
 import React from "react";
 import DateHelper from './DateHelper.js';
+import ICalCreator from './ICalCreator';
 
 var sundayWeek = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
 
@@ -14,11 +15,15 @@ export default class TitleBar extends React.Component{
     currentYear = this.props.getDateSelection().selectedYear;
     currentDay = this.props.getDateSelection().selectedDay;
     currentWeek = this.props.getDateSelection().selectedWeek;
+    //console.log(this.props.courseObject);
+    var creator = new ICalCreator(this.props.courseObject);
+    //console.log(creator.addClass);
     return (
       <div className="titleBar">
           <button className="scheduleButtons">
             <i className="material-icons">today</i>
           </button>
+          <a href={"data:text/plain;charset=UTF-8," + creator.startICalFile()} download="Hello.txt">Download iCal!</a>
           <DatePaginator getDateSelection={this.props.getDateSelection} selectedWeek={this.props.selectedWeek} currentView={this.props.currentView} changeDateSelection={this.props.changeDateSelection} />
           <ViewSelectorButtons changeDesiredView={this.props.changeDesiredView} />
       </div>
@@ -64,7 +69,7 @@ class DatePaginator extends React.Component{
     }else if (this.props.currentView == "WeekView"){
       var day = new Date(currentMonth, currentYear, 1);
       if (currentWeek == DateHelper.getWeeksOfMonth(day)){ //We are on the last week
-        console.log("entering this one");
+        //console.log("entering this one");
         if (currentMonth < 11){
           currentMonth += 1;
         }else{
