@@ -4,6 +4,7 @@ import DayGrid from "./Day.jsx"
 import TitleBar from "./TitleBar.jsx"
 import WeekGrid from "./Week.jsx"
 import DateHelper from './DateHelper.js';
+import ICalCreator from './ICalCreator.js'
 //Variables will go here:
 //Variables will go here:
 
@@ -53,7 +54,7 @@ export default class Calendar extends React.Component{
   }
 
   changeDateSelection(month, year, day, week){
-    console.log("setting week to: " + week);
+    //console.log("setting week to: " + week);
     if (week == null){
       this.setState({
         selectedMonth: month,
@@ -99,7 +100,7 @@ export default class Calendar extends React.Component{
       //Return MonthView
       return (
           <div className="content">
-            <TitleBar getDateSelection={this.getDateSelection.bind(this)} selectedDay={this.state.selectedDay} currentView={this.state.desiredView} changeDesiredView={this.changeDesiredView.bind(this)} changeDateSelection={this.changeDateSelection.bind(this)} />
+            <TitleBar  courseObject={this.state.courseObject} getDateSelection={this.getDateSelection.bind(this)} selectedDay={this.state.selectedDay} currentView={this.state.desiredView} changeDesiredView={this.changeDesiredView.bind(this)} changeDateSelection={this.changeDateSelection.bind(this)} />
             <MonthView getDateSelection={this.getDateSelection.bind(this)} courseObject={this.state.courseObject}/>
           </div>
       );
@@ -111,6 +112,8 @@ export default class Calendar extends React.Component{
 class MonthView extends React.Component{
 
   render(){
+    var thing = new ICalCreator(this.props.courseObject);
+    //console.log(thing.addClass(1));
     return(
     <div className="mainContent">
       <MonthGrid getDateSelection={this.props.getDateSelection} courseObject={this.props.courseObject}/>

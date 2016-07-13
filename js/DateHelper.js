@@ -29,7 +29,7 @@ export default class DateHelper{
       var endWeekStart = (
         (7 * (weeksOfMonth - 2)) + (7 - startDay) + 1
       );
-      console.log("daysInMonth : " + daysInMonth);
+      //console.log("daysInMonth : " + daysInMonth);
       for (var i = 0; i < 7; i++){
         if (endWeekStart <= daysInMonth){
           weekArray[i] = endWeekStart;
