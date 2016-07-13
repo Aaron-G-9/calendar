@@ -15,20 +15,72 @@ export default class ContentCreator{
   }
 
   getStartMonth(){
-    //console.log(this.jsonObject);
+    ////console.log(this.jsonObject);
     var date = new Date(this.jsonObject.myCourses[this.classNumber].courseInformation[0].courseMeetings[0].startDate);
     return date.getMonth();
-    //console.log(date);
+    ////console.log(date);
   }
 
-  getStartDay(){
+  getStartDay(){ //Returns a number between 1 and 31
     var date = new Date(this.jsonObject.myCourses[this.classNumber].courseInformation[0].courseMeetings[0].startDate);
     return date.getDate();
   }
 
+  getICalStartEnd(){
+      var date = new Date(this.jsonObject.myCourses[this.classNumber].courseInformation[0].courseMeetings[0].startDate);
+      var month = date.getMonth() + 1;
+      var year = date.getFullYear();
+      var day = date.getDate();
+
+      if(month < 10){
+        month = "0" + month;
+      }
+      if (day < 10){
+        day = "0" + day;
+      }
+
+      var timeStartDate = new Date(this.jsonObject.myCourses[this.classNumber].courseInformation[0].courseMeetings[0].startTime);
+      var timeEndDate = new Date(this.jsonObject.myCourses[this.classNumber].courseInformation[0].courseMeetings[0].endTime);
+      var dtstart = (year + "" + month + "" + day + "T" + (timeStartDate.getHours() -1) + "" + timeStartDate.getMinutes() + "00")
+      var dtend = (year + "" + month + "" + day + "T" + (timeEndDate.getHours() -1) + "" + timeEndDate.getMinutes() + "00")
+      return{
+        dtstart: dtstart,
+        dtend: dtend,
+      }
+
+    
+
+  }
+
+  getICalUntil(){
+    var date = new Date(this.jsonObject.myCourses[this.classNumber].courseInformation[0].courseMeetings[0].endDate);
+    var month = date.getMonth() + 1;
+    var year = date.getFullYear();
+    var day = date.getDate();
+
+    if(month < 10){
+      month = "0" + month;
+    }
+    if (day < 10){
+      day = "0" + day;
+    }
+    var timeEndDate = new Date(this.jsonObject.myCourses[this.classNumber].courseInformation[0].courseMeetings[0].endTime);
+    return (year + "" + month + "" + day + "T" + (timeEndDate.getHours() -1) + "" + timeEndDate.getMinutes() + "00");
+
+  }
+
+  getICalEndTime(){
+
+  }
+
+
+
+
+
+
   getEndMonth(){
     var date = new Date(this.jsonObject.myCourses[this.classNumber].courseInformation[0].courseMeetings[0].endDate);
-    //console.log(date);
+    ////console.log(date);
     return date.getMonth();
   }
   getEndDay(){
@@ -121,6 +173,31 @@ export default class ContentCreator{
     return dayOfWeekArr;
   }
 
+  getICalMeetDays(){
+    var daysString = (this.jsonObject.myCourses[this.classNumber].courseInformation[0].courseMeetings[0].meetDays);
+    var iCalArray = [];
+    for (var i = 0; i < daysString.length; i++){
+      switch(daysString.substring(i, i+1)){
+        case "M":
+          iCalArray.push("MO");
+          break;
+        case "T":
+          iCalArray.push("TU");
+          break;
+        case "W":
+          iCalArray.push("WE");
+          break;
+        case "R":
+          iCalArray.push("TH");
+          break;
+        case "F":
+          iCalArray.push("FR");
+          break;
+      }
+    }
+    return iCalArray;
+  }
+
 
   getBuilding(){
     var building = this.jsonObject.myCourses[this.classNumber].courseInformation[0].courseMeetings[0].buildingRoom;
@@ -135,7 +212,7 @@ export default class ContentCreator{
 
     var minutes = (endMinutes - startMinutes)/60;
     var hours = endHour - startHour;
-    //console.log(startHour + ", " + endHour);
+    ////console.log(startHour + ", " + endHour);
     return ((hours + minutes) * 4.6);
   }
 
