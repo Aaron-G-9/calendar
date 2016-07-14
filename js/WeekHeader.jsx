@@ -1,14 +1,14 @@
 import React from "react";
+import DateHelper from './DateHelper.js'
 
-var sundayWeek = ["Sun", "Mon", "Tue", "Wed", "Thur", "Fri", "Sat"];
 var d = new Date();
 var today = d.getDate();
 
 export default class MonthDaysHeader extends React.Component{
   render() {
     var daysHeader = [];
-    for (var i = 0; i < sundayWeek.length; i++){
-      daysHeader.push(<div>{sundayWeek[i]}</div>);
+    for (var i = 0; i < DateHelper.getSundayWeek().length; i++){
+      daysHeader.push(<div>{DateHelper.getSundayWeek()[i]}</div>);
     }
     return(
       <div className="weekHeader">

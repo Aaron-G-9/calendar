@@ -3,9 +3,6 @@ import MonthBoxContent from  "./MonthBoxContent.jsx";
 import MonthDaysHeader from "./MonthDaysHeader.jsx";
 import DateHelper from './DateHelper.js';
 var d = new Date();
-const monthNames = ["January", "February", "March", "April", "May", "June",
-"July", "August", "September", "October", "November", "December"
-];
 
 
 

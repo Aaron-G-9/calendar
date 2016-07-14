@@ -4,22 +4,12 @@ import DayGrid from "./Day.jsx"
 import TitleBar from "./TitleBar.jsx"
 import WeekGrid from "./Week.jsx"
 import DateHelper from './DateHelper.js';
-//Variables will go here:
-//Variables will go here:
-
-
-
-const monthNames = ["January", "February", "March", "April", "May", "June",
-"July", "August", "September", "October", "November", "December"
-];
-
-var sundayWeek = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
 
 var d = new Date();
 var currentMonth = d.getMonth();
 var currentYear = d.getUTCFullYear();
 var currentDay = d.getDate();
-var currentMonthName = monthNames[currentMonth];
+var currentMonthName = DateHelper.getMonthNames()[currentMonth];
 
 
 export default class Calendar extends React.Component{

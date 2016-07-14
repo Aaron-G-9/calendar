@@ -2,7 +2,6 @@ import React from "react";
 import DateHelper from './DateHelper.js';
 import ICalCreator from './ICalCreator';
 
-var sundayWeek = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
 
 var currentMonth;
 var currentYear;

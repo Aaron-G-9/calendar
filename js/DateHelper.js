@@ -83,4 +83,9 @@ export default class DateHelper{
     return monthNames;
   }
 
+  static getSundayWeek(){
+    const sundayWeek = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+    return sundayWeek;
+  }
+
 }
