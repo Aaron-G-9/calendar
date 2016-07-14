@@ -83,7 +83,7 @@ export default class Calendar extends React.Component{
     if (this.state.desiredView == ("WeekView")){
       return (
         <div className="content">
-          <TitleBar getDateSelection={this.getDateSelection.bind(this)} selectedWeek={this.state.selectedWeek} currentView={this.state.desiredView} changeDesiredView={this.changeDesiredView.bind(this)} changeDateSelection={this.changeDateSelection.bind(this)} />
+          <TitleBar courseObject={this.state.courseObject} getDateSelection={this.getDateSelection.bind(this)} selectedWeek={this.state.selectedWeek} currentView={this.state.desiredView} changeDesiredView={this.changeDesiredView.bind(this)} changeDateSelection={this.changeDateSelection.bind(this)} />
           <WeekGrid getDateSelection={this.getDateSelection.bind(this)} courseObject={this.state.courseObject}/>
 
           </div>
@@ -91,7 +91,7 @@ export default class Calendar extends React.Component{
     }else if (this.state.desiredView == ("DayView")){
       return (
           <div className="content">
-            <TitleBar getDateSelection={this.getDateSelection.bind(this)} selectedDay={this.state.selectedDay} currentView={this.state.desiredView} changeDesiredView={this.changeDesiredView.bind(this)} changeDateSelection={this.changeDateSelection.bind(this)} />
+            <TitleBar courseObject={this.state.courseObject} getDateSelection={this.getDateSelection.bind(this)} selectedDay={this.state.selectedDay} currentView={this.state.desiredView} changeDesiredView={this.changeDesiredView.bind(this)} changeDateSelection={this.changeDateSelection.bind(this)} />
             <DayView getDateSelection={this.getDateSelection.bind(this)} changeDateSelection={this.changeDateSelection.bind(this)} courseObject={this.state.courseObject} />
           </div>
       );
