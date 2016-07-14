@@ -79,7 +79,6 @@ export default class Calendar extends React.Component{
   }
 
   render() {
-    //console.log(this.state.courseObject);
     if (this.state.desiredView == ("WeekView")){
       return (
         <div className="content">
