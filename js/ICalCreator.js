@@ -8,13 +8,18 @@ export default class ICalCreator{
 
 
   makeFile(){
-    var file;
-    file = this.startICalFile();
-    for (var i = 1; i < 4; i++){
-      file += (this.addClass(i));
+    if (this.courseObject != null && this.courseObject != "empty"){
+      var file;
+      file = this.startICalFile();
+      for (var i = 1; i < 4; i++){
+        file += (this.addClass(i));
+      }
+      file += (this.endICalFile());
+      return file;
+    }else{
+      return "Error reading from database"
     }
-    file += (this.endICalFile());
-    return file;
+
 
   }
 
