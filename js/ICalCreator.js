@@ -11,7 +11,7 @@ export default class ICalCreator{
     if (this.courseObject != null && this.courseObject != "empty"){
       var file;
       file = this.startICalFile();
-      for (var i = 1; i < 4; i++){
+      for (var i = 0; i < this.courseObject.myCourses.length; i++){
         file += (this.addClass(i));
       }
       file += (this.endICalFile());
