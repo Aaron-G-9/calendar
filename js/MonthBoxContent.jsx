@@ -8,7 +8,6 @@ export default class MonthBoxContent extends React.Component{
     if (this.props.courseObject != "empty"){
       var contentBoxesArr = [];
 
-      ////console.log(this.props.courseObject.myCourses.length);
       for (var i = 0; i < this.props.courseObject.myCourses.length; i++){
         var content = new ContentCreator(this.props.courseObject, i);
         //If it is the months in between the start and end months of the class
@@ -32,7 +31,7 @@ export default class MonthBoxContent extends React.Component{
         contentBoxesArr.sort(function(a, b){return a.props.hour - b.props.hour});
         //console.log(contentBoxesArr[0].props.hour);
       } catch (e){
-        
+
       }
 
       return(
