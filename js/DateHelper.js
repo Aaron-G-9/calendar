@@ -88,4 +88,13 @@ export default class DateHelper{
     return sundayWeek;
   }
 
+  static getTodayDate(){
+    var today = new Date();
+    return {
+      year: today.getFullYear(),
+      month: today.getMonth(),
+      day: today.getDate(),
+    }
+  }
+
 }
