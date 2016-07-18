@@ -9,7 +9,7 @@ import WeekGrid from "./Week.jsx"; //React component - week view
 //The parent component. Everything is contained in this. It is the big daddy.
 export default class Calendar extends React.Component{
   //A constructor to set initial state. This.state must be declared ONLY in the
-  //constructor. Elsewhere, this.setstate() is used.
+  //constructor. Elsewhere, this.setState() is used.
   constructor(){
     super(); //React component constructors must call super()
     this.state = {
@@ -71,7 +71,10 @@ export default class Calendar extends React.Component{
     );
   }
 
-
+  //This first render method displays MonthView by default. In all cases, a
+  //TitleBar component is created, and then the day/week/month view. all of the\
+  //variables being passed through from state get passed through each of the children
+  //as props until they are needed
   render() {
     if (this.state.desiredView == ("WeekView")){
       return (
@@ -84,7 +87,7 @@ export default class Calendar extends React.Component{
       return (
           <div className="content">
             <TitleBar courseObject={this.state.courseObject} getDateSelection={this.getDateSelection.bind(this)} selectedDay={this.state.selectedDay} currentView={this.state.desiredView} changeDesiredView={this.changeDesiredView.bind(this)} changeDateSelection={this.changeDateSelection.bind(this)} />
-            <DayView getDateSelection={this.getDateSelection.bind(this)} changeDateSelection={this.changeDateSelection.bind(this)} courseObject={this.state.courseObject} />
+            <DayGrid getDateSelection={this.getDateSelection.bind(this)}  courseObject={this.state.courseObject} />
           </div>
       );
     }else{
@@ -96,26 +99,16 @@ export default class Calendar extends React.Component{
           </div>
       );
     }
-
   }
 }
 
+//This seperate component is used is main so that the div 'mainContent' can be
+//created. This might be merged in the above render method.
 class MonthView extends React.Component{
-
   render(){
     return(
     <div className="mainContent">
       <MonthGrid getDateSelection={this.props.getDateSelection} courseObject={this.props.courseObject}/>
     </div>);
-  }
-}
-
-class DayView extends React.Component{
-  render() {
-    return (
-      <div>
-        <DayGrid getDateSelection={this.props.getDateSelection} courseObject={this.props.courseObject}/>
-      </div>
-    );
   }
 }
