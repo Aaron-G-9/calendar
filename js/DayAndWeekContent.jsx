@@ -23,7 +23,7 @@ export default class WeekColumn extends React.Component {
         //Creates a column of week boxes where content can be added
         //There are two week boxes for every week hour. Therefore each box is a
         //half hour segement
-        for (var i = 0; i < (prettyHours.length * 2); i++) {
+        for (var i = 0; i < (DateHelper.getPrettyHours().length * 2); i++) {
             contentboxes.push(<HourBox getDateSelection={this.props.getDateSelection} dayOfWeek={this.props.dayOfWeek} courseObject={this.props.courseObject} hourBoxNumber={i}/>);
         }
         return (

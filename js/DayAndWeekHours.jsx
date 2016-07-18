@@ -1,5 +1,6 @@
 import React from 'react'
 
+import DateHelper from './DateHelper.js';
 //This component displays an array of the child component. This is an especially
 //cool feature that React offers. And we can push however many components we want
 //This array contains as many components as the length of the 'prettyHours array'
@@ -7,9 +8,9 @@ import React from 'react'
 export default class DayAndWeekHours extends React.Component {
     render() {
         var timeboxes = [];
-        for (var i = 0; i < prettyHours.length; i++) {
-            timeboxes.push(<HourGuideBox title={DateHelper.getprettyHours()[i]}/>);
-            timeboxes[i] = (<HourGuideBox Box title={DateHelper.getprettyHours()[i]}/>);
+        for (var i = 0; i < DateHelper.getPrettyHours().length; i++) {
+            timeboxes.push(<HourGuideBox title={DateHelper.getPrettyHours()[i]}/>);
+            timeboxes[i] = (<HourGuideBox Box title={DateHelper.getPrettyHours()[i]}/>);
         }
         return (
             <div className="dayview">
