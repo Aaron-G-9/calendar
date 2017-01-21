@@ -1,37 +1,20 @@
 {
   "name": "react-calendar",
-  "version": "0.0.1",
-  "description": "In devlopment react calendar portlet",
-  "main": "index.js",
+  "version": "0.1.0",
+  "private": true,
+  "devDependencies": {
+    "react-scripts": "0.8.5"
+  },
   "dependencies": {
-    "babel": "^6.5.2",
-    "babel-core": "^6.9.1",
-    "babel-loader": "^6.2.4",
-    "babel-plugin-add-module-exports": "^0.2.1",
-    "babel-plugin-react-html-attrs": "^2.0.0",
-    "babel-plugin-transform-class-properties": "^6.9.1",
-    "babel-plugin-transform-decorators-legacy": "^1.3.4",
-    "babel-preset-es2015": "^6.9.0",
-    "babel-preset-react": "^6.5.0",
-    "babel-preset-stage-0": "^6.5.0",
-    "react": "^15.1.0",
-    "react-bootstrap": "^0.29.5",
-    "react-dom": "^15.1.0",
-    "webpack": "^1.13.1"
+    "material-ui": "^0.16.7",
+    "react": "^15.4.2",
+    "react-dom": "^15.4.2",
+    "react-tap-event-plugin": "^2.0.1"
   },
-  "devDependencies": {},
   "scripts": {
-    "dev": "webpack-dev-server --content-base src --inline --hot",
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/Aaron-G-9/calendar.git"
-  },
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/Aaron-G-9/calendar/issues"
-  },
-  "homepage": "https://github.com/Aaron-G-9/calendar#readme"
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  }
 }
